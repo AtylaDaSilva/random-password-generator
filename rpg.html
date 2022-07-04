@@ -12,7 +12,22 @@
             <form method="dialog">
                 <fieldset id="settings">
                     <legend><h2>Settings</h2></legend>
+
                     <label for="length">Length: </label> <input type="number" name="_length" id="length" required>
+
+                    <input type="checkbox" name="_start" id="start"> <label for="start">Starts with </label>
+
+                    <input type="checkbox" name="_end" id="end"> <label for="end">Ends with</label>
+
+                    <input type="checkbox" name="_numbers" id="numbers"> <label for="numbers">Contains numbers?</label>
+
+                    <input type="checkbox" name="_symbols" id="symbols"> <label for="symbols">Contains symbols?</label>
+
+                    <input type="checkbox" name="_lettersLower" id="lettersLower"> <label for="lettersLower">Contains lower case letters?</label>
+
+                    <input type="checkbox" name="_lettersUpper" id="lettersUpper"> <label for="lettersUpper">Contains upper case letters?</label>
+
+                    <!--Submit Button-->
                     <input type="submit" id="submit" value="Generate Password">
                     <fieldset>
                         <legend><label for="result">
@@ -39,12 +54,12 @@
             //Password Length
             const length = getPasswordLength();
 
+            //Gets a character from charPool and concatenates it to password string
             for (var i = length; i > 0; i--) {
                 var index1 = generateIndex(charPool.length);
                 var index2 = generateIndex(charPool[index1].length);
 
                 password += charPool[index1][index2];
-                console.log(password);
             }
             
             //Result field. Password generated will be displayed here
