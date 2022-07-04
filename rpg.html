@@ -4,33 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheets" href="rpg.css">
+    <link rel="stylesheet" href="rpg.css">
     <title>Random Password Generator</title>
 </head>
 <body>
     <main>
-        <section>
+        <section id="form-section">
             <form method="dialog">
                 <fieldset id="settings">
                     <legend><h2>Settings</h2></legend>
 
-                    <label for="length">Length: </label> <input type="number" name="_length" id="length" required>
+                    <fieldset id="contains-field">
+                        <legend><h3>Contains</h3></legend>
 
-                    <input type="checkbox" name="_start" id="start"> <label for="start">Starts with </label>
+                        <div>
+                            <input type="checkbox" name="_numbers" id="numbers"> <label for="numbers">Numbers?</label>
+                        </div>
 
-                    <input type="checkbox" name="_end" id="end"> <label for="end">Ends with</label>
+                        <div>
+                            <input type="checkbox" name="_symbols" id="symbols"> <label for="symbols">Symbols?</label>
+                        </div>
 
-                    <input type="checkbox" name="_numbers" id="numbers"> <label for="numbers">Contains numbers?</label>
+                        <div>
+                            <input type="checkbox" name="_lettersLower" id="lettersLower"> <label for="lettersLower">Lower case letters?</label>
+                        </div>
 
-                    <input type="checkbox" name="_symbols" id="symbols"> <label for="symbols">Contains symbols?</label>
+                        <div>
+                            <input type="checkbox" name="_lettersUpper" id="lettersUpper"> <label for="lettersUpper">Upper case letters?</label>
+                        </div>
+                    </fieldset>
 
-                    <input type="checkbox" name="_lettersLower" id="lettersLower"> <label for="lettersLower">Contains lower case letters?</label>
+                    <section id="start-end">
+                        <div>
+                            <input type="checkbox" name="_start" id="start"> <label for="start">Starts with </label> <input type="text" name="_start-text" id="start-text">
+                        </div>
 
-                    <input type="checkbox" name="_lettersUpper" id="lettersUpper"> <label for="lettersUpper">Contains upper case letters?</label>
+                        <div>
+                            <input type="checkbox" name="_end" id="end"> <label for="end">Ends with</label> <input type="text" name="_end-text" id="end-text">
+                        </div>
+                    </section>
 
-                    <!--Submit Button-->
+                    <!--Password length-->
+                    <section id="length-section">
+                        <label for="length">Length: </label> <input type="number" name="_length" id="length" required>
+                    </section>
+
+                    <!--Submit button-->
                     <input type="submit" id="submit" value="Generate Password">
-                    <fieldset>
+
+                    <!--Result field-->
+                    <fieldset id="result-field">
                         <legend><label for="result">
                             <h3>Result</h3>
                         </label></legend>

@@ -1,0 +1,48 @@
+body {
+    background: slateblue;
+}
+
+h2, h3 {
+    margin: 0px;
+}
+
+fieldset {
+    background: white;
+    margin: auto;
+}
+
+#settings {
+    width: 430px;
+    height: 300px;
+}
+
+#contains-field {
+    width: 150px;
+    padding: 10px;
+    margin: 0px;
+    display: inline-block;
+}
+
+#contains-field div input {
+    display: inline-block;
+}
+
+#start-end {
+    float: right;
+    margin-top: 5px;
+}
+
+#start-end div {
+    display: block;
+    padding-bottom: 15px;
+}
+
+#length-section {
+    display: block;
+    padding: 15px 0px 15px 0px;
+}
+
+#result-field {
+    width: 200px;
+    margin: 0px;
+}
