@@ -46,3 +46,7 @@ fieldset {
     width: 200px;
     margin: 0px;
 }
+
+#copy-button {
+    margin-left: 10px;
+}

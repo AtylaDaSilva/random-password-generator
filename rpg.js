@@ -41,5 +41,13 @@ function generateIndex(range) {
     return Math.floor(Math.random() * range);
 };
 
+//Event Listeners
 const submit = document.querySelector("#submit");
 submit.addEventListener("click", generatePassword);
+
+const copyButton = document.querySelector("#copy-button");
+copyButton.addEventListener("click", () => {
+    const password = document.querySelector("#result").value;
+    navigator.clipboard.writeText(password);
+    console.log(password);
+});
