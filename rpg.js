@@ -1,5 +1,6 @@
 function generatePassword() {
     var password = "";
+    
     charPool = [
         //Numbers
         [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -12,12 +13,24 @@ function generatePassword() {
     //Password Length
     const length = getPasswordLength();
 
+    const startsWith = document.querySelector("input#start").checked;
+
+    if (startsWith) {
+        password = attachStart(password);
+    }
+
     //Gets a character from charPool and concatenates it to password string
     for (var i = length; i > 0; i--) {
         var index1 = generateIndex(charPool.length);
         var index2 = generateIndex(charPool[index1].length);
 
         password += charPool[index1][index2];
+    }
+
+    const endsWith = document.querySelector("input#end").checked;
+
+    if (endsWith) {
+        password = attachEnd(password);
     }
     
     //Result field. Password generated will be displayed here
@@ -39,6 +52,18 @@ function generateIndex(range) {
     }
 
     return Math.floor(Math.random() * range);
+};
+
+function attachStart(password) {
+    const startText = document.querySelector("#start-text").value;
+
+    return startText + password;
+};
+
+function attachEnd(password) {
+    const endText = document.querySelector("#end-text").value;
+
+    return password + endText;
 };
 
 //Event Listeners
