@@ -2,12 +2,14 @@ function generatePassword() {
     var password = "";
     
     charPool = [
-        //Numbers
+        //Numbers - Index = 0
         [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-        //Lower case letters
+        //Symbols - Index = 1
+        ["!", "@", "#", "$", "%", "&", "?"],
+        //Lower case letters - Index = 2
         ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
-        //Upper case letters
-        ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+        //Upper case letters - Index = 3
+        ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
     ];
     
     //Password Length
@@ -32,8 +34,10 @@ function generatePassword() {
     if (endsWith) {
         password = attachEnd(password);
     }
+
+    checkContains(0);
     
-    //Result field. Password generated will be displayed here
+    //Password generated will be displayed in the result input field
     renderPassword(password);
 };
 
@@ -64,6 +68,25 @@ function attachEnd(password) {
     const endText = document.querySelector("#end-text").value;
 
     return password + endText;
+};
+
+function checkContains(index) {
+    var contains = document.getElementsByClassName("contains-checkbox");
+
+    var selectedChars = new Array(contains.length);
+
+    for (var i = 0; i < selectedChars.length; i++) {
+        if (!contains[i].checked) {
+            continue;
+        }
+        
+        selectedChars[i] = contains[i].dataset.index;
+
+    }
+
+    console.log(selectedChars);
+    
+
 };
 
 //Event Listeners
