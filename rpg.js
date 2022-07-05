@@ -24,6 +24,12 @@ function generatePassword() {
     //Gets a character from charPool and concatenates it to password string
     for (var i = length; i > 0; i--) {
         var index1 = generateIndex(charPool.length);
+        
+        while (!checkContains(index1)) {
+            index1 = generateIndex(charPool.length);
+            console.log(index1);
+        }
+
         var index2 = generateIndex(charPool[index1].length);
 
         password += charPool[index1][index2];
@@ -34,8 +40,6 @@ function generatePassword() {
     if (endsWith) {
         password = attachEnd(password);
     }
-
-    checkContains(0);
     
     //Password generated will be displayed in the result input field
     renderPassword(password);
@@ -71,21 +75,26 @@ function attachEnd(password) {
 };
 
 function checkContains(index) {
-    var contains = document.getElementsByClassName("contains-checkbox");
+    //Checkbox list references
+    const checkboxList = document.querySelectorAll("#checkbox-list > li > input");
 
-    var selectedChars = new Array(contains.length);
+    //Contains checked items from the checkbox list
+    var checkedChars = new Array(checkboxList.length);
 
-    for (var i = 0; i < selectedChars.length; i++) {
-        if (!contains[i].checked) {
+    for (var i = 0; i < checkboxList.length; i++) {
+        if (!checkboxList[i].checked) {
             continue;
         }
-        
-        selectedChars[i] = contains[i].dataset.index;
-
+        checkedChars[i] = checkboxList[i].dataset.index;
     }
 
-    console.log(selectedChars);
-    
+    for (var i = 0; i < checkedChars.length; i++) {
+        if (checkedChars[i] == index) {
+            return true;
+        }
+    }
+
+    return false;
 
 };
 

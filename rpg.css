@@ -23,8 +23,9 @@ fieldset {
     display: inline-block;
 }
 
-#contains-field div input {
-    display: inline-block;
+#checkbox-list {
+    margin: 0px;
+    padding: 0px;
 }
 
 #start-end {

@@ -17,21 +17,23 @@
                     <fieldset id="contains-field">
                         <legend><h3>Contains</h3></legend>
 
-                        <div>
-                            <input type="checkbox" name="_numbers" class="contains-checkbox" id="numbers" data-index="0" checked> <label for="numbers">Numbers?</label>
-                        </div>
-
-                        <div>
-                            <input type="checkbox" name="_symbols" class="contains-checkbox" id="symbols" data-index="1" checked> <label for="symbols">Symbols?</label>
-                        </div>
-
-                        <div>
-                            <input type="checkbox" name="_lettersLower" class="contains-checkbox" id="lettersLower" data-index="2" checked> <label for="lettersLower">Lower case letters?</label>
-                        </div>
-
-                        <div>
-                            <input type="checkbox" name="_lettersUpper" class="contains-checkbox" id="lettersUpper" data-index="3" checked> <label for="lettersUpper">Upper case letters?</label>
-                        </div>
+                        <ul type="none" id="checkbox-list">
+                            <li>
+                                <input type="checkbox" name="_numbers"
+                                id="numbers" data-index="0" checked>
+                                <label for="numbers">Numbers?</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="_symbols" id="symbols" data-index="1" checked>
+                                <label for="symbols">Symbols?</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="_lettersLower" id="lettersLower" data-index="2" checked> <label for="lettersLower">Lower case letters?</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="_lettersUpper" id="lettersUpper" data-index="3" checked> <label for="lettersUpper">Upper case letters?</label>
+                            </li>
+                        </ul>
                     </fieldset>
 
                     <section id="start-end">
