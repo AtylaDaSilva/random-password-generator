@@ -98,13 +98,37 @@ function checkContains(index) {
 
 };
 
+function copyToClipboard() {
+    const passwordField = document.querySelector("#result");
+    const password = passwordField.value;
+
+    passwordField.select();
+
+    navigator.clipboard.writeText(password);
+    
+    alterCopyButtonTitle("Copied!");
+};
+
+function alterCopyButtonTitle(newTitle) {
+    const button = document.querySelector("#copy-button");
+    button.title = newTitle;
+};
+
 //Event Listeners
+//Copy to clipboard button
+const copyButton = document.querySelector("#copy-button");
+const defaultTitle = copyButton.title;
+copyButton.addEventListener("click", copyToClipboard);
+
+//Generate password button
 const submit = document.querySelector("#submit");
 submit.addEventListener("click", generatePassword);
+submit.addEventListener("click", () => {
+    alterCopyButtonTitle(defaultTitle);
+});
 
-const copyButton = document.querySelector("#copy-button");
-copyButton.addEventListener("click", () => {
-    const password = document.querySelector("#result").value;
-    navigator.clipboard.writeText(password);
-    console.log(password);
+//Result field
+const result = document.querySelector("#result");
+result.addEventListener("input", () => {
+    alterCopyButtonTitle(defaultTitle);
 });
