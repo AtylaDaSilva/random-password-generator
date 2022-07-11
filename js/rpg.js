@@ -15,6 +15,11 @@ function generatePassword() {
     //Password Length
     const length = getPasswordLength();
 
+    if (length < 1) {
+        renderPassword("Invalid length");
+        return;
+    }
+
     const startsWith = document.querySelector("input#start").checked;
 
     if (startsWith) {
