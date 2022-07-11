@@ -27,7 +27,7 @@ function generatePassword() {
         
         while (!checkContains(index1)) {
             index1 = generateIndex(charPool.length);
-            console.log(index1);
+            
         }
 
         var index2 = generateIndex(charPool[index1].length);
