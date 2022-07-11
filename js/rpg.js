@@ -29,8 +29,16 @@ function generatePassword() {
     //Gets a character from charPool and concatenates it to password string
     for (var i = length; i > 0; i--) {
         var index1 = generateIndex(charPool.length);
+
+
+        let noOptionsSelected = checkContains(index1);
+        if (noOptionsSelected === -1) {
+            renderPassword("No Options Selected");
+            return;
+        }
         
         while (!checkContains(index1)) {
+            
             index1 = generateIndex(charPool.length);
             
         }
@@ -91,6 +99,16 @@ function checkContains(index) {
             continue;
         }
         checkedChars[i] = checkboxList[i].dataset.index;
+    }
+
+    let noCheckedChars = checkedChars.every((element) => {
+        element === undefined;
+    })
+
+    console.log(noCheckedChars);
+
+    if (noCheckedChars) {
+        return -1;
     }
 
     for (var i = 0; i < checkedChars.length; i++) {
