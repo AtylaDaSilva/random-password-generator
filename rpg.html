@@ -4,76 +4,126 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/rpg.css">
     <!-- Bootstrap CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <title>Random Password Generator</title>
 </head>
-<body>
+<body class="bg-dark">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#" style="font-size: 1.3em">Random Passwor Generator</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Color Schemes</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
     <main>
-        <section id="form-section">
-            <form method="dialog">
-                <fieldset id="settings">
-                    <legend><h2>Settings</h2></legend>
-
-                    <fieldset id="contains-field">
-                        <legend><h3>Contains</h3></legend>
-
-                        <ul type="none" id="checkbox-list">
-                            <!--
-                                IMPORTANT! If you wish to add more "Contais" options, you must:
-                                1 - Create an input element in a list item <li> element inside this unordered list;
-                                2 - The new <li> must have a data-index attribute with a value that matches the new options's index inside the charPool array
+        <div class="container-sm my-3 py-3 bg-light" style="height: 432px; max-width: 800px; border-radius: 5px;">
+            <form>
+                <!--ROW 01-->
+                <div class="row">
+                    <!--COL-->
+                    <div class="col-sm">
+                        <div class="container-fluid">
+                            <label for="length" class="form-label">Password Length - {Value placeholder}</label>
+                            <input type="range" class="form-range" id="length" min="1" max="20">
+                        </div>
+                    </div>
+                </div>
+                <!--ROW 02-->
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="startsWith" placeholder="Starts with">
+                            <label for="startsWith">Starts with</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="endsWith" placeholder="Ends with">
+                            <label for="endsWith">Ends with</label>
+                        </div>
+                    </div>
+                </div>
+                <!--ROW 03-->
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="result" placeholder="Result" readonly>
+                            <label for="result">Result</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary my-3">Generate Password</button>
+                        <!--COPY TO CLIPBOARD BUTTON-->
+                        <button class="btn btn-light" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="42" fill="currentColor" class="bi bi-clipboard"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                <path
+                                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                            </svg>
+                        
+                            <!-- COPIED
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="42" fill="currentColor" class="bi bi-clipboard-check"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                <path
+                                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                <path
+                                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                            </svg>
                             -->
-                            <li>
-                                <input type="checkbox" name="_numbers"
-                                id="numbers" data-index="0" checked>
-                                <label for="numbers">Numbers?</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="_symbols" id="symbols" data-index="1" checked>
-                                <label for="symbols">Symbols?</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="_lettersLower" id="lettersLower" data-index="2" checked> <label for="lettersLower">Lower case letters?</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="_lettersUpper" id="lettersUpper" data-index="3" checked> <label for="lettersUpper">Upper case letters?</label>
-                            </li>
-                        </ul>
-                    </fieldset>
-
-                    <section id="start-end">
-                        <div>
-                            <input type="checkbox" name="_start" id="start"> <label for="start">Starts with </label> <input type="text" name="_start-text" id="start-text">
+                        </button>
+                    </div>
+                    <div class="col-sm-4">
+                        <!--OPTIONS ACCORDION-->
+                        <div class="accordion mb-3" id="options">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Options
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="accordionHeader">
+                                    <div class="accordion-body">
+                                        <div class="form-check form-switch">
+                                            <input id="numbers" name="_numbers" class="form-check-input" type="checkbox" role="switch" checked>
+                                            <label for="numbers" class="form-check-label">Numbers</label>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input id="symbols" name="_symbols" class="form-check-input" type="checkbox" role="switch" checked>
+                                            <label for="symbols" class="form-check-label">Symbols</label>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input name="_lowerCase" id="lowerCase" class="form-check-input" type="checkbox" role="switch"
+                                                checked>
+                                            <label for="lowerCase" class="form-check-label">Lower case letters</label>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input id="upperCase" name="_upperCase" class="form-check-input" type="checkbox" role="switch"
+                                                checked>
+                                            <label for="upperCase" class="form-check-label">Upper case letters</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <div>
-                            <input type="checkbox" name="_end" id="end"> <label for="end">Ends with</label> <input type="text" name="_end-text" id="end-text">
-                        </div>
-                    </section>
-
-                    <!--Password length-->
-                    <section id="length-section">
-                        <label for="length">Length: </label> <input type="number" name="_length" id="length" required>
-                    </section>
-
-                    <!--Submit button-->
-                    <input type="submit" id="submit" value="Generate Password">
-
-                    <!--Result field-->
-                    <fieldset id="result-field">
-                        <legend><label for="result">
-                            <h3>Result</h3>
-                        </label></legend>
-                        <input type="text" name="_result" id="result"> <input type="image" src="img/copy_25x25.png" alt="Copy to clipboard" id="copy-button" title="Copy to clipboard">
-                    </fieldset>
-                </fieldset>
+                    </div>
+                </div>
             </form>
-        </section>
+        </div>
     </main>
     <!-- Bootstrap JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script src="js/rpg.js"></script>
+    <!-- <script src="js/rpg.js"></script> -->
 </body>
 </html>
