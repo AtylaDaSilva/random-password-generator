@@ -59,7 +59,7 @@
                             <input type="text" class="form-control" id="result" placeholder="Result" readonly>
                             <label for="result">Result</label>
                         </div>
-                        <button type="button" class="btn btn-primary my-3">Generate Password</button>
+                        <button id="submitButton" type="button" class="btn btn-primary my-3">Generate Password</button>
                         <!--COPY TO CLIPBOARD BUTTON-->
                         <button class="btn btn-light" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="42" fill="currentColor" class="bi bi-clipboard"
@@ -96,21 +96,19 @@
                                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="accordionHeader">
                                     <div class="accordion-body">
                                         <div class="form-check form-switch">
-                                            <input id="numbers" name="_numbers" class="form-check-input" type="checkbox" role="switch" checked>
+                                            <input id="numbers" name="_numbers" class="form-check-input" type="checkbox" role="switch" data-index="0" checked>
                                             <label for="numbers" class="form-check-label">Numbers</label>
                                         </div>
                                         <div class="form-check form-switch">
-                                            <input id="symbols" name="_symbols" class="form-check-input" type="checkbox" role="switch" checked>
+                                            <input id="symbols" name="_symbols" class="form-check-input" type="checkbox" role="switch" data-index="1" checked>
                                             <label for="symbols" class="form-check-label">Symbols</label>
                                         </div>
                                         <div class="form-check form-switch">
-                                            <input name="_lowerCase" id="lowerCase" class="form-check-input" type="checkbox" role="switch"
-                                                checked>
+                                            <input name="_lowerCase" id="lowerCase" class="form-check-input" type="checkbox" role="switch" data-index="2" checked>
                                             <label for="lowerCase" class="form-check-label">Lower case letters</label>
                                         </div>
                                         <div class="form-check form-switch">
-                                            <input id="upperCase" name="_upperCase" class="form-check-input" type="checkbox" role="switch"
-                                                checked>
+                                            <input id="upperCase" name="_upperCase" class="form-check-input" type="checkbox" role="switch" data-index="3" checked>
                                             <label for="upperCase" class="form-check-label">Upper case letters</label>
                                         </div>
                                     </div>
