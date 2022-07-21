@@ -1,3 +1,7 @@
+//Enables all Bootstrap tooltips
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 //Event Listeners
 window.onload = loadPage;
 //Password length input
@@ -9,6 +13,7 @@ submit.addEventListener("click", generatePassword);
 //Copy to clipboard button
 const copyButton = document.querySelector("#copyButton");
 copyButton.addEventListener("click", copyToClipboard);
+const copyButtonTooltip = bootstrap.Tooltip.getInstance("#copyButton");
 
 //Functions
 function loadPage() {
@@ -176,6 +181,9 @@ function copyToClipboard() {
         </svg>
     `;
 
+    copyButtonTooltip.setContent({'.tooltip-inner': 'Copied!'});
+    
+
     let timer = setTimeout(revertCopyButtonIcon, 3000);
 };
 
@@ -189,4 +197,6 @@ function revertCopyButtonIcon() {
             d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
         </svg>
     `;
+
+    copyButtonTooltip.setContent({'.tooltip-inner': 'Copy to clipboard'});
 }
