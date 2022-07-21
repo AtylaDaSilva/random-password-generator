@@ -16,8 +16,8 @@ function loadPage() {
 }
 
 function handleLengthInput() { 
-    const label = document.querySelector("#lengthLabel");
-    label.innerHTML = `Password Length - ${lengthInput.value}`;
+    const badge = document.querySelector("#lengthBadge");
+    badge.innerText = `${lengthInput.value}`;
 }
 
 // generatePassword() is invoked when generate password button is clicked
