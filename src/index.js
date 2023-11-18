@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom/client';
 //Components
 import App from './components/App';
 
-//CSS
+//Bootsrap JS (+Popper.js) & Compiled Sass
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import './css/index.css';
 
 //WebVitals
