@@ -1,5 +1,5 @@
 //React
-import { React } from 'react';
+import { React, useState } from 'react';
 
 //CSS
 import '../css/App.css';
@@ -9,6 +9,33 @@ export default function App() {
     event.preventDefault();
     return;
   }
+
+  /**
+   * Updates state every time a change occurs in one of the form inputs
+   * @param {*} event Event object passed by the onChange prop
+   */
+  function handleChange(event) { 
+    const { name, value, type, checked } = event.target;
+
+    setFormData(currentFormData => { 
+      return (type.toLowerCase() === 'checkbox')
+        ? { ...currentFormData, options: { ...currentFormData.options, [name]: checked } }
+        : { ...currentFormData, [name]: value }
+    })
+  }
+
+  const [formData, setFormData] = useState({
+    passwordLength: 42,
+    startsWith: "",
+    endsWith: "",
+    options: {
+      hasNumbers: true,
+      hasSymbols: true,
+      hasLowerCase: true,
+      hasUpperCase: true
+    },
+    result: ""
+  });
 
   return (
     <div className="App d-flex justify-content-center align-items-center">
@@ -35,9 +62,17 @@ export default function App() {
                 >
                   <label htmlFor="password-range-input">
                     Password Length
-                    <span className='badge bg-primary'>42</span>
+                    <span className='badge bg-primary ms-1'>{ formData.passwordLength }</span>
                   </label>
-                  <input type="range" name="password-length" id="password-range-input" />
+                  <input
+                    type="range"
+                    name="passwordLength"
+                    id="password-range-input"
+                    value={formData.passwordLength}
+                    onChange={handleChange}
+                    min={6}
+                    max={100}
+                  />
                 </div>
               </div>
             </div>
@@ -52,20 +87,24 @@ export default function App() {
                   <div className="form-floating mb-3">
                     <input
                       type="text"
-                      name="starts-with"
+                      name="startsWith"
                       id="starts-with-input"
                       className='form-control'
                       placeholder='Starts with'
+                      value={formData.startsWith}
+                      onChange={handleChange}
                     />
                     <label htmlFor="starts-with-input">Starts with</label>
                   </div>
                   <div className="form-floating">
                     <input
                       type="text"
-                      name="ends-with"
+                      name="endsWith"
                       id="ends-with-input"
                       className='form-control'
                       placeholder='Starts with'
+                      value={formData.endsWith}
+                      onChange={handleChange}
                     />
                     <label htmlFor="starts-with-input">Ends with</label>
                   </div>
@@ -87,6 +126,8 @@ export default function App() {
                       id="result-input"
                       className='form-control'
                       placeholder='Result'
+                      value={formData.result}
+                      readOnly
                     />
                     <label htmlFor="result-input">Result</label>
                   </div>
@@ -140,7 +181,9 @@ export default function App() {
                               type="checkbox"
                               role="switch"
                               id="numbers-input"
-                              checked
+                              name='hasNumbers'
+                              checked={formData.options.hasNumbers}
+                              onChange={handleChange}
                             />
                             <label className="form-check-label" htmlFor="numbers-input">Numbers</label>
                           </div>
@@ -150,7 +193,9 @@ export default function App() {
                               type="checkbox"
                               role="switch"
                               id="symbols-input"
-                              checked
+                              name='hasSymbols'
+                              checked={formData.options.hasSymbols}
+                              onChange={handleChange}
                             />
                             <label className="form-check-label" htmlFor="symbols-input">Symbols</label>
                           </div>
@@ -160,7 +205,9 @@ export default function App() {
                               type="checkbox"
                               role="switch"
                               id="lower-case-letters-input"
-                              checked
+                              name='hasLowerCase'
+                              checked={formData.options.hasLowerCase}
+                              onChange={handleChange}
                             />
                             <label className="form-check-label" htmlFor="lower-case-letters-input">Lower Case Letters</label>
                           </div>
@@ -170,7 +217,9 @@ export default function App() {
                               type="checkbox"
                               role="switch"
                               id="upper-case-letters-input"
-                              checked
+                              name='hasUpperCase'
+                              checked={formData.options.hasUpperCase}
+                              onChange={handleChange}
                             />
                             <label className="form-check-label" htmlFor="upper-case-letters-input">Upper Case Letters</label>
                           </div>
