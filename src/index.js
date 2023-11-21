@@ -7,7 +7,7 @@ import App from './components/App';
 
 //Bootsrap JS (+Popper.js) & Compiled Sass
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import './css/index.css';
+import './css/scss/index.css';
 
 //WebVitals
 import reportWebVitals from './tests/reportWebVitals';
