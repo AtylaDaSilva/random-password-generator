@@ -110,7 +110,7 @@ export default function App() {
     <div className="App d-flex justify-content-center align-items-center">
       <div
         id='main-container'
-        className="container border border-primary h-50 d-flex flex-column justify-content-start"
+        className="container border border-primary d-flex flex-column justify-content-start"
       >
         <header id='main-container-header'>
           <h1 className='text-center'>Random Password Generator</h1>
