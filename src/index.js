@@ -5,17 +5,19 @@ import ReactDOM from 'react-dom/client';
 //Components
 import App from './components/App';
 
-//Bootsrap JS (+Popper.js) & Compiled Sass
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+//Compiled Bootstrap Sass
 import './css/scss/index.css';
 
 //WebVitals
 import reportWebVitals from './tests/reportWebVitals';
 
+//Bootstrap JS + Popper.js
+const bootstrap = require('bootstrap');
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App modules={{bootstrap}} />
   </React.StrictMode>
 );
 

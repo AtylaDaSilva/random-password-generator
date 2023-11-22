@@ -1,10 +1,14 @@
 //React
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 
 //CSS
 import '../css/App.css';
 
-export default function App() {
+//Components
+import CopyToClipboardBtn from './buttons/CopyToClipboardBtn';
+
+export default function App(props) {
+  const { bootstrap } = props.modules;
   /**
    * Generates a pseudo-random password by pulling characters from a characted pool
    * @returns The generated password string
@@ -93,6 +97,7 @@ export default function App() {
     })
   }
 
+  /*Form Data State */
   const [formData, setFormData] = useState({
     passwordLength: 42,
     startsWith: "",
@@ -105,6 +110,12 @@ export default function App() {
     },
     result: ""
   });
+
+  useEffect(() => {
+    //Enable Bootstrap Tooltips
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+  }, [])
 
   return (
     <div className="App d-flex justify-content-center align-items-center">
@@ -206,19 +217,7 @@ export default function App() {
                       Generate Password
                     </button>
                     
-                    <button id='copy-to-clipboard-btn' className='btn btn-outline-primary' type='button'>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor"
-                        className="bi bi-clipboard"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                      </svg>
-                    </button>
+                    <CopyToClipboardBtn modules={ props.modules } copyContent={ formData.result } />
                   </div>
                 </div>
               </div>
@@ -301,6 +300,24 @@ export default function App() {
             </div>
           </form>
         </main>
+      </div>
+
+      {/* Bootstrap Toast */}
+      <div className="toastContainer mt-3 me-3 position-fixed top-0 end-0">
+        <div
+          id='copyToClipboardToast'
+          className="toast align-self-end align-items-center"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <div className="d-flex">
+            <div className="toast-body">
+              Copied!
+            </div>
+            <button type="button" className="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
       </div>
     </div>
   );
