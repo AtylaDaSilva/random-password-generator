@@ -4,6 +4,11 @@
     width: 100vw;
 }
 
+.App-header {
+    height: 80px;
+    width: 100%;
+}
+
 #main-container {
     width: 800px;
     height: 500px;

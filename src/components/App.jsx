@@ -6,6 +6,7 @@ import '../css/App.css';
 
 //Components
 import CopyToClipboardBtn from './buttons/CopyToClipboardBtn';
+import ThemeSwicther from './buttons/ThemeSwicther';
 
 export default function App(props) {
   const { bootstrap } = props.modules;
@@ -118,10 +119,13 @@ export default function App(props) {
   }, [])
 
   return (
-    <div className="App d-flex justify-content-center align-items-center">
+    <div className="App d-flex flex-column justify-content-start align-items-center">
+      <div className="App-header d-flex justify-content-center align-items-start">
+        <ThemeSwicther />
+      </div>
       <div
         id='main-container'
-        className="container border border-primary d-flex flex-column justify-content-start"
+        className="container border border-primary d-flex flex-column justify-content-start mt-5"
       >
         <header id='main-container-header'>
           <h1 className='text-center'>Random Password Generator</h1>
