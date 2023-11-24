@@ -14,7 +14,10 @@ export default function PasswordForm(props) {
     const { handleChange, handleSubmit, toast } = props.callbacks;
     return (
         <form
-            onSubmit={handleSubmit}
+            onSubmit={(event) => {
+                handleSubmit(event);
+                toast("Password generated successfully!");
+            }}
             className='container h-100 w-100'
         >
             { /*Row 01 */}

@@ -45,7 +45,7 @@ export default function CopyToClipboard(props) {
                     );
                 });
 
-                toast("Testing...");
+                toast("Copied!");
             })
     }
 
