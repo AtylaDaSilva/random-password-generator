@@ -8,6 +8,9 @@ import App from './components/App';
 //Compiled Bootstrap Sass
 import './css/scss/index.css';
 
+//Bootstrap Icons CSS
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 //WebVitals
 import reportWebVitals from './tests/reportWebVitals';
 

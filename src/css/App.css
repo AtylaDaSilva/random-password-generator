@@ -13,14 +13,3 @@
     width: 800px;
     height: 500px;
 }
-
-/*Copy to clipboard button*/
-.copy-to-clipboard-btn {
-    border: none;
-    background-color: transparent;
-    color: var(--bs-primary);
-}
-
-.copy-to-clipboard-btn:hover {
-    color: var(--bs-link-hover-color);
-}
