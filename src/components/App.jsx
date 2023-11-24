@@ -61,7 +61,7 @@ export default function App(props) {
     //Make sure the element in the options array at the position of index1 is true.
     do { 
       index1 = Math.floor(Math.random() * charPool.length);
-    } while (options[index1] == false)
+    } while (options[index1] === false)
 
     //Generate the second index of the matrix
     const index2 = Math.floor(Math.random() * charPool[index1].length);
@@ -135,7 +135,7 @@ export default function App(props) {
   useEffect(() => {
     //Enable Bootstrap Tooltips
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
   }, [])
 
   return (
