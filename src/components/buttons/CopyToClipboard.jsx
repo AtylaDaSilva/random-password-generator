@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 
-export default function CopyToClipboardBtn(props) {
+export default function CopyToClipboard(props) {
     const { bootstrap } = props.modules;
     /**
      * Updates button image and sets a timeout to revert the image back after a delay.

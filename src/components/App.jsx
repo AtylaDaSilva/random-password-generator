@@ -5,7 +5,7 @@ import { React, useState, useEffect } from 'react';
 import '../css/App.css';
 
 //Components
-import CopyToClipboardBtn from './buttons/CopyToClipboardBtn';
+import PasswordForm from './forms/PasswordForm';
 import ThemeSwicther from './buttons/ThemeSwicther';
 
 export default function App(props) {
@@ -120,190 +120,24 @@ export default function App(props) {
 
   return (
     <div className="App d-flex flex-column justify-content-start align-items-center">
+
       <div className="App-header d-flex justify-content-center align-items-start">
         <ThemeSwicther />
       </div>
+
       <div
         id='main-container'
         className="container border border-primary rounded-3 d-flex flex-column justify-content-start mt-5"
       >
+
         <header id='main-container-header'>
           <h1 className='text-center fs-2'>Random Password Generator</h1>
         </header>
+
         <main id='main-container-body' className='d-flex align-items-center justify-content-center flex-grow-1'>
-
-          { /*Bootstrap Grid */ }
-          <form
-            onSubmit={handleSubmit}
-            className='container h-100 w-100'
-          >
-            { /*Row 01 */ }
-            <div className="row mb-3">
-              <div className="col">
-                <div
-                  id="password-length-container"
-                  className='d-flex flex-column'
-                >
-                  <label htmlFor="password-range-input">
-                    Password Length
-                    <span className='badge bg-primary ms-1'>{ formData.passwordLength }</span>
-                  </label>
-                  <input
-                    type="range"
-                    name="passwordLength"
-                    id="password-range-input"
-                    value={formData.passwordLength}
-                    onChange={handleChange}
-                    min={6}
-                    max={100}
-                  />
-                </div>
-              </div>
-            </div>
-
-            { /*Row 02 */ }
-            <div className="row mb-3">
-              <div className="col">
-                <div
-                  id="starts-ends-container"
-                  className='d-flex flex-column'
-                >
-                  <div className="form-floating mb-3">
-                    <input
-                      type="text"
-                      name="startsWith"
-                      id="starts-with-input"
-                      className='form-control'
-                      placeholder='Starts with'
-                      value={formData.startsWith}
-                      onChange={handleChange}
-                    />
-                    <label htmlFor="starts-with-input">Starts with</label>
-                  </div>
-                  <div className="form-floating">
-                    <input
-                      type="text"
-                      name="endsWith"
-                      id="ends-with-input"
-                      className='form-control'
-                      placeholder='Starts with'
-                      value={formData.endsWith}
-                      onChange={handleChange}
-                    />
-                    <label htmlFor="starts-with-input">Ends with</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            { /*Row 03 */ }
-            <div className="row">
-              <div className="col-8">
-                <div
-                  id="result-container"
-                  className='d-flex flex-column justify-content-center align-self-start'
-                >
-                  <div className="form-floating flex-grow-1 mb-2">
-                    <input
-                      type="text"
-                      name="result"
-                      id="result-input"
-                      className='form-control'
-                      placeholder='Result'
-                      value={formData.result}
-                      readOnly
-                    />
-                    <label htmlFor="result-input">Result</label>
-                  </div>
-
-                  <div id="submit-container" className='d-flex flex-row align-items-center'>
-                    <button className='btn btn-primary me-1' type="submit">
-                      Generate Password
-                    </button>
-                    
-                    <CopyToClipboardBtn modules={ props.modules } copyContent={ formData.result } />
-                  </div>
-                </div>
-              </div>
-              <div className="col-4">
-                <div id="options-container">
-                  <div className="accordion" id="options-accordion">
-                    <div className="accordion-item">
-                      <h2 className="accordion-header">
-                        <button
-                          className="accordion-button"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#collapseContainer"
-                          aria-expanded="true"
-                          aria-controls="collapseContainer"
-                        >
-                          Options
-                        </button>
-                      </h2>
-                      <div
-                        id="collapseContainer"
-                        className="accordion-collapse collapse"
-                        data-bs-parent="#options-accordion"
-                      >
-                        <div className="accordion-body">
-                          <div className="form-check form-switch">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              role="switch"
-                              id="numbers-input"
-                              name='hasNumbers'
-                              checked={formData.options.hasNumbers}
-                              onChange={handleChange}
-                            />
-                            <label className="form-check-label" htmlFor="numbers-input">Numbers</label>
-                          </div>
-                          <div className="form-check form-switch">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              role="switch"
-                              id="symbols-input"
-                              name='hasSymbols'
-                              checked={formData.options.hasSymbols}
-                              onChange={handleChange}
-                            />
-                            <label className="form-check-label" htmlFor="symbols-input">Symbols</label>
-                          </div>
-                          <div className="form-check form-switch">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              role="switch"
-                              id="lower-case-letters-input"
-                              name='hasLowerCase'
-                              checked={formData.options.hasLowerCase}
-                              onChange={handleChange}
-                            />
-                            <label className="form-check-label" htmlFor="lower-case-letters-input">Lower Case Letters</label>
-                          </div>
-                          <div className="form-check form-switch">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              role="switch"
-                              id="upper-case-letters-input"
-                              name='hasUpperCase'
-                              checked={formData.options.hasUpperCase}
-                              onChange={handleChange}
-                            />
-                            <label className="form-check-label" htmlFor="upper-case-letters-input">Upper Case Letters</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
+          <PasswordForm modules={{ bootstrap }} formData={formData} callbacks={{ handleChange, handleSubmit }} />
         </main>
+
       </div>
 
       {/* Bootstrap Toast */}
