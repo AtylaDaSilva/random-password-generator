@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 
 export default function CopyToClipboard(props) {
     const { bootstrap } = props.modules;
+    const { toast } = props.callbacks;
     /**
      * Updates button image and sets a timeout to revert the image back after a delay.
      */
@@ -44,12 +45,7 @@ export default function CopyToClipboard(props) {
                     );
                 });
 
-                //Show bootstrap toast
-                const toastElement = document.querySelector("#copyToClipboardToast");
-                if (toastElement) { 
-                    const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
-                    toast.show();
-                }
+                toast("Testing...");
             })
     }
 

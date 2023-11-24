@@ -11,7 +11,7 @@ import CopyToClipboard from '../buttons/CopyToClipboard';
 
 export default function PasswordForm(props) {
     const { formData } = props;
-    const { handleChange, handleSubmit } = props.callbacks;
+    const { handleChange, handleSubmit, toast } = props.callbacks;
     return (
         <form
             onSubmit={handleSubmit}
@@ -55,11 +55,14 @@ export default function PasswordForm(props) {
                         <ResultInput formData={formData} />
 
                         <div id="submit-container" className='d-flex flex-row align-items-center'>
-                            <button className='btn btn-primary me-1' type="submit">
+                            <button
+                                className='btn btn-primary me-1'
+                                type="submit"
+                            >
                                 Generate Password
                             </button>
 
-                            <CopyToClipboard modules={props.modules} copyContent={formData.result} />
+                            <CopyToClipboard modules={props.modules} copyContent={formData.result} callbacks={ props.callbacks } />
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import '../css/App.css';
 //Components
 import PasswordForm from './forms/PasswordForm';
 import ThemeSwicther from './buttons/ThemeSwicther';
+import ToastContainer from './toasts/ToastContainer';
 
 export default function App(props) {
   const { bootstrap } = props.modules;
@@ -112,6 +113,25 @@ export default function App(props) {
     result: ""
   });
 
+  //Toast function & state
+  /**
+   * Displays a string of text as a toast
+   * @param {*} text The string of text to be displayed
+   */
+  function toast(text) {
+    //Update toast state
+    setToastText(text);
+
+    //Show bootstrap toast
+    const toastElement = document.querySelector("#toast");
+    if (toastElement) { 
+        const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
+        toast.show();
+    }
+  }
+
+  const [toastText, setToastText] = useState(() => "");
+
   useEffect(() => {
     //Enable Bootstrap Tooltips
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
@@ -135,28 +155,13 @@ export default function App(props) {
         </header>
 
         <main id='main-container-body' className='d-flex align-items-center justify-content-center flex-grow-1'>
-          <PasswordForm modules={{ bootstrap }} formData={formData} callbacks={{ handleChange, handleSubmit }} />
+          <PasswordForm modules={{ bootstrap }} formData={formData} callbacks={{ handleChange, handleSubmit, toast }} />
         </main>
 
       </div>
 
       {/* Bootstrap Toast */}
-      <div className="toastContainer mt-3 me-3 position-fixed top-0 end-0">
-        <div
-          id='copyToClipboardToast'
-          className="toast align-self-end align-items-center"
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-        >
-          <div className="d-flex">
-            <div className="toast-body">
-              Copied!
-            </div>
-            <button type="button" className="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-          </div>
-        </div>
-      </div>
+      <ToastContainer toastText={ toastText } />
     </div>
   );
 }
