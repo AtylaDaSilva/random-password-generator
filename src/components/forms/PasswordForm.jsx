@@ -8,6 +8,7 @@ import EndsWithInput from "../inputs/EndsWithInput";
 import ResultInput from "../inputs/ResultInput";
 import Options from "../accordions/Options";
 import CopyToClipboard from '../buttons/CopyToClipboard';
+import ShowHidePassword from "../buttons/ShowHidePassword";
 
 export default function PasswordForm(props) {
     const { formData } = props;
@@ -66,6 +67,8 @@ export default function PasswordForm(props) {
                             </button>
 
                             <CopyToClipboard modules={props.modules} copyContent={formData.result} callbacks={ props.callbacks } />
+
+                            <ShowHidePassword callbacks={ props.callbacks } />
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ export default function ResultInput(props) {
     return (
         <div className="form-floating flex-grow-1 mb-2">
             <input
-                type="text"
+                type="password"
                 name="result"
                 id="result-input"
                 className='form-control'
