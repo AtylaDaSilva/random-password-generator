@@ -1,5 +1,6 @@
 //React
 import { React, useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 
 //CSS
 import '../css/App.css';
@@ -8,6 +9,7 @@ import '../css/App.css';
 import PasswordForm from './forms/PasswordForm';
 import ThemeSwicther from './buttons/ThemeSwicther';
 import ToastContainer from './toasts/ToastContainer';
+import Link from './buttons/Link';
 
 export default function App(props) {
   const { bootstrap } = props.modules;
@@ -158,6 +160,24 @@ export default function App(props) {
           <PasswordForm modules={{ bootstrap }} formData={formData} callbacks={{ handleChange, handleSubmit, toast }} />
         </main>
 
+      </div>
+
+      <div id='social-media-container' className='d-flex justify-content-center align-items-end flex-grow-1 mb-3'>
+        <Link
+          href="https://github.com/AtylaDaSilva"
+          tooltip={{title: "GitHub", placement: "top"}}
+          className="mx-2"
+        >
+          <i className="bi bi-github fs-3"></i>
+        </Link>
+
+        <Link
+          href="https://www.linkedin.com/in/atyla-mendes-da-silva-39a21018b/"
+          tooltip={{title: "LinkedIn", placement: "top"}}
+          className="mx-2"
+        >
+          <i className="bi bi-linkedin fs-3"></i>
+        </Link>
       </div>
 
       {/* Bootstrap Toast */}
