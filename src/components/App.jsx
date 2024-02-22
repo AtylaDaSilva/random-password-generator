@@ -79,11 +79,27 @@ export default function App(props) {
   function handleSubmit(event) { 
     event.preventDefault();
     
+    //Generate password
+    const password = generatePassword();
+    
+    //Update form state
     setFormData(currentFormData => { 
       return {
         ...currentFormData,
-        result: generatePassword()
+        result: password
       };
+    });
+
+    //Update history state
+    setHistory(currentHistory => {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2, "0");
+      const m = now.getMinutes().toString().padStart(2, "0");
+      const s = now.getSeconds().toString().padStart(2, "0");
+      return [
+        ...currentHistory,
+        [password, `${h}:${m}:${s}`]
+      ];
     });
   }
 
@@ -138,13 +154,22 @@ export default function App(props) {
     //Enable Bootstrap Tooltips
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-  }, [])
+  }, []);
+
+  //History state and functions
+  const [history, setHistory] = useState(() => []);
 
   //Object to pass callbacks around between components
   const callbacks = {
     toast,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    setHistory
+  }
+
+  const state = {
+    formData,
+    history
   }
 
   return (
@@ -156,7 +181,7 @@ export default function App(props) {
 
       <MainContent modules={{ bootstrap }} formData={formData} callbacks={callbacks} />
 
-      <SubFooter />
+      <SubFooter state={state} />
 
       <Footer />
 

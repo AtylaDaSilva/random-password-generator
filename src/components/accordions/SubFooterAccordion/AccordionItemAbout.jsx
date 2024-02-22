@@ -4,7 +4,7 @@ import Link from "../../buttons/Link";
 
 export default function AccordionItemAbout() {
     return (
-        <Accordion.Item eventKey={0}>
+        <Accordion.Item eventKey={1}>
             <Accordion.Header>About this app</Accordion.Header>
             <Accordion.Body>
                 <p>
