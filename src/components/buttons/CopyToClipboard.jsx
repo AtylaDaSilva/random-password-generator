@@ -10,8 +10,8 @@ export default function CopyToClipboard(props) {
             className='btn btn-outline-primary fs-6'
             type='button'
             data-bs-toggle="tooltip"
-            title="Copy to clipboard"
-            data-bs-placement="right"
+            data-bs-title="Copy to clipboard"
+            data-bs-placement="bottom"
             onClick={() => {
                 //Copy contents to clipboard
                 navigator.clipboard.writeText(props.copyContent);

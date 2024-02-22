@@ -5,14 +5,16 @@ import { React, useState, useEffect } from 'react';
 import '../css/App.css';
 
 //Components
-import PasswordForm from './forms/PasswordForm';
+import MainContent from './containers/MainContent';
 import ThemeSwicther from './buttons/ThemeSwicther';
 import ToastContainer from './toasts/ToastContainer';
+import SubFooter from './containers/SubFooter';
+import Footer from './containers/Footer';
 
 export default function App(props) {
   const { bootstrap } = props.modules;
   /**
-   * Generates a pseudo-random password by pulling characters from a characted pool
+   * Generates a pseudo-random password by pulling characters from a character pool
    * @returns The generated password string
    */
   function generatePassword() {
@@ -77,11 +79,27 @@ export default function App(props) {
   function handleSubmit(event) { 
     event.preventDefault();
     
+    //Generate password
+    const password = generatePassword();
+    
+    //Update form state
     setFormData(currentFormData => { 
       return {
         ...currentFormData,
-        result: generatePassword()
+        result: password
       };
+    });
+
+    //Update history state
+    setHistory(currentHistory => {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2, "0");
+      const m = now.getMinutes().toString().padStart(2, "0");
+      const s = now.getSeconds().toString().padStart(2, "0");
+      return [
+        ...currentHistory,
+        [password, `${h}:${m}:${s}`]
+      ];
     });
   }
 
@@ -136,29 +154,36 @@ export default function App(props) {
     //Enable Bootstrap Tooltips
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-  }, [])
+  }, []);
+
+  //History state and functions
+  const [history, setHistory] = useState(() => []);
+
+  //Object to pass callbacks around between components
+  const callbacks = {
+    toast,
+    handleChange,
+    handleSubmit,
+    setHistory
+  }
+
+  const state = {
+    formData,
+    history
+  }
 
   return (
-    <div className="App d-flex flex-column justify-content-start align-items-center">
+    <div className="App d-flex flex-column justify-content-start align-items-center overflow-x-hidden">
 
       <div className="App-header d-flex justify-content-center align-items-start">
         <ThemeSwicther />
       </div>
 
-      <div
-        id='main-container'
-        className="container border border-primary rounded-3 d-flex flex-column justify-content-start mt-5"
-      >
+      <MainContent modules={{ bootstrap }} formData={formData} callbacks={callbacks} />
 
-        <header id='main-container-header'>
-          <h1 className='text-center fs-2'>Random Password Generator</h1>
-        </header>
+      <SubFooter state={state} />
 
-        <main id='main-container-body' className='d-flex align-items-center justify-content-center flex-grow-1'>
-          <PasswordForm modules={{ bootstrap }} formData={formData} callbacks={{ handleChange, handleSubmit, toast }} />
-        </main>
-
-      </div>
+      <Footer />
 
       {/* Bootstrap Toast */}
       <ToastContainer toastText={ toastText } />
