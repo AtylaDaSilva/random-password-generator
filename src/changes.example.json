@@ -1,0 +1,16 @@
+{
+    "1.1.1": [
+        "A metric tonne of bug fixes",
+        "Even more bug fixes"
+    ],
+    "1.1.0": [
+        "Added X feature",
+        "Added Y feature",
+        "Fixed a bug where bla bla"
+    ],
+    "1.0.0": [
+        "Initial release",
+        "Update 1",
+        "Update 2"
+    ]
+}

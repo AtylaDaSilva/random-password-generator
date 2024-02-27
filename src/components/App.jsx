@@ -11,6 +11,13 @@ import ToastContainer from './toasts/ToastContainer';
 import SubFooter from './containers/SubFooter';
 import Footer from './containers/Footer';
 
+//Changelog
+try {
+  var changesData = require("../changes.json");
+} catch (error) {
+  console.error(error);
+}
+
 export default function App(props) {
   const { bootstrap } = props.modules;
   /**
@@ -159,6 +166,9 @@ export default function App(props) {
   //History state and functions
   const [history, setHistory] = useState(() => []);
 
+  //Changelog state
+  const [changes, setChanges] = useState(() => changesData || {});
+
   //Object to pass callbacks around between components
   const callbacks = {
     toast,
@@ -169,7 +179,8 @@ export default function App(props) {
 
   const state = {
     formData,
-    history
+    history,
+    changes
   }
 
   return (
