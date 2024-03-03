@@ -4,7 +4,7 @@ import { React } from "react";
 export default function ToastContainer(props) {
     const { toastText } = props;
     return (
-        <div className="mt-4 me-5 position-fixed top-0 end-0">
+        <div id="toast-container">
             <div
                 id='toast'
                 className="toast border-primary align-self-end align-items-center"

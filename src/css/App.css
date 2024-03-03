@@ -4,20 +4,50 @@ body {
 
 /*App*/
 .App {
-    min-height: 100vh;
+    height: 100vh;
     width: 100vw;
 }
 
-.App-header {
-    height: 80px;
-    width: 100%;
+/*Main Content*/
+#main-content {
+    width: 650px;
+    height: 570px;
 }
 
-#main-container {
-    width: 800px;
-    height: 500px;
+@media (max-width: 680px) {
+    #main-content {
+        width: 100%;
+    }
 }
 
-#accordion-section {
+@media (max-width: 576px) {
+    #main-content {
+        height: 620px;
+    }
+}
+
+/*Sub-Footer*/
+#subfooter-accordion {
     width: 800px;
+}
+
+/*Toast*/
+#toast-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+@media (max-width: 1380px) {
+    #toast-container {
+        top: 0px;
+        right: 0px;
+    }
+}
+
+@media (max-width: 900px) {
+    #toast-container {
+        top: 0%;
+        right: auto;
+    }
 }

@@ -1,5 +1,6 @@
 //React
 import { React } from "react";
+import { Button, Container, Row, Col } from "react-bootstrap";
 
 //Components
 import PasswordLengthRange from "../inputs/PasswordLengthRange";
@@ -19,68 +20,56 @@ export default function PasswordForm(props) {
                 handleSubmit(event);
                 toast("Password generated successfully!");
             }}
-            className='container h-100 w-100'
         >
-            { /*Row 01 */}
-            <div className="row mb-3">
-                <div className="col">
-                    <div id="password-length-container">
+            <Container>
+                <Row>
+                    <Col className="mb-3">
                         <PasswordLengthRange
                             formData={formData}
                             callbacks={{ handleChange }}
                         />
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
 
-            { /*Row 02 */}
-            <div className="row mb-3">
-                <div className="col">
-                    <div className='d-flex flex-column'>
+                <Row className="gy-3 mb-3">
+                    <Col xs="12">
                         <StartsWithInput
                             formData={formData}
                             callbacks={props.callbacks}
                         />
+                    </Col>
+                    <Col xs="12">
                         <EndsWithInput
                             formData={formData}
                             callbacks={props.callbacks}
                         />
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
 
-            { /*Row 03 */}
-            <div className="row">
-                <div className="col-8">
-                    <div
-                        id="result-container"
-                        className='d-flex flex-column justify-content-center align-self-start'
-                    >
+                <Row className="gy-3">
+                    <Col xs="12">
                         <ResultInput formData={formData} />
-
-                        <div id="submit-container" className='d-flex flex-row align-items-center'>
-                            <button
-                                className='btn btn-primary me-1'
+                    </Col>
+                    <Col className="d-flex justify-content-start align-items-start">
+                        <div className="me-3">
+                            <Button
+                                variant="primary"
                                 type="submit"
                             >
                                 Generate Password
-                            </button>
-
-                            <CopyToClipboard modules={props.modules} copyContent={formData.result} callbacks={ props.callbacks } />
-
-                            <ShowHidePassword callbacks={ props.callbacks } />
+                            </Button>
                         </div>
-                    </div>
-                </div>
-                <div className="col-4">
-                    <div id="options-container">
+                        <CopyToClipboard modules={props.modules} copyContent={formData.result} callbacks={props.callbacks} />
+                        <ShowHidePassword callbacks={props.callbacks} />
+                    </Col>
+                    <Col xs="12" sm="6">
                         <Options
                             formData={formData}
                             callbacks={props.callbacks}
                         />
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
+            </Container>
         </form>
     );
 }

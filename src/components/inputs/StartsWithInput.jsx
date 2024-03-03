@@ -6,7 +6,7 @@ export default function StartsWithInput(props) {
     const { handleChange } = props.callbacks;
 
     return (
-        <div className="form-floating mb-3">
+        <div className="form-floating">
             <input
                 type="text"
                 name="startsWith"

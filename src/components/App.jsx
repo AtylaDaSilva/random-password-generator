@@ -184,11 +184,11 @@ export default function App(props) {
   }
 
   return (
-    <div className="App d-flex flex-column justify-content-start align-items-center overflow-x-hidden">
+    <div className="App d-flex flex-column justify-content-between align-items-center">
 
-      <div className="App-header d-flex justify-content-center align-items-start">
+      <header className="App-header d-flex justify-content-center my-2">
         <ThemeSwicther />
-      </div>
+      </header>
 
       <MainContent modules={{ bootstrap }} formData={formData} callbacks={callbacks} />
 

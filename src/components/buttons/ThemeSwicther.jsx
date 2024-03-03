@@ -5,7 +5,7 @@ export default function ThemeSwicther(props) {
     
     return (
         <button
-            className='btn btn-outline-primary mt-2 d-flex'
+            className='btn btn-outline-primary d-flex'
             data-bs-toggle="tooltip"
             data-bs-title="Change Theme"
             data-bs-placement="bottom"

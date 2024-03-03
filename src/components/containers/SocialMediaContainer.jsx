@@ -3,7 +3,7 @@ import Link from '../buttons/Link';
 
 export default function SocialMediaContainer() {
     return (
-        <div id='social-media-container'>
+        <div>
             <Link
                 href="https://github.com/AtylaDaSilva"
                 tooltip={{ title: "GitHub", placement: "top" }}
