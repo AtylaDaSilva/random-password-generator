@@ -2,6 +2,10 @@ body {
     overflow-x: hidden;
 }
 
+.fs-7 {
+    font-size: .8rem;
+}
+
 /*App*/
 .App {
     height: 100vh;
@@ -11,18 +15,11 @@ body {
 /*Main Content*/
 #main-content {
     width: 650px;
-    height: 570px;
 }
 
 @media (max-width: 680px) {
     #main-content {
         width: 100%;
-    }
-}
-
-@media (max-width: 576px) {
-    #main-content {
-        height: 620px;
     }
 }
 

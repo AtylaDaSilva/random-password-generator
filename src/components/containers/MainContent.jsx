@@ -1,7 +1,7 @@
 import React from 'react';
 import PasswordForm from '../forms/PasswordForm';
 
-export default function MainContent({modules, formData, callbacks}) {
+export default function MainContent({modules, state, callbacks}) {
     return (
         <main
         id='main-content'
@@ -9,7 +9,7 @@ export default function MainContent({modules, formData, callbacks}) {
         >
             <h1 className='mb-3 text-center fs-2'>Random Password Generator</h1>
 
-            <PasswordForm modules={modules} formData={formData} callbacks={callbacks} />
+            <PasswordForm modules={modules} state={state} callbacks={callbacks} />
         </main>
     );
 }

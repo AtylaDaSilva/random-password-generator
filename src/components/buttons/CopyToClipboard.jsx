@@ -7,7 +7,7 @@ export default function CopyToClipboard(props) {
     //Render
     return (
         <button
-            className='btn btn-outline-primary fs-6'
+            className='btn btn-outline-primary fs-6 mx-1'
             type='button'
             data-bs-toggle="tooltip"
             data-bs-title="Copy to clipboard"
@@ -33,7 +33,7 @@ export default function CopyToClipboard(props) {
         >
             {
                 (buttonState === false)
-                    ? <i className="bi bi-clipboard-fill"></i>
+                    ? <i className="bi bi-clipboard"></i>
                     : <i className="bi bi-clipboard-check-fill"></i>
             }
         </button>

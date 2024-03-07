@@ -1,6 +1,6 @@
 //React
 import { React } from "react";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Button, Container, Row, Col, Badge, ProgressBar } from "react-bootstrap";
 
 //Components
 import PasswordLengthRange from "../inputs/PasswordLengthRange";
@@ -10,15 +10,20 @@ import ResultInput from "../inputs/ResultInput";
 import Options from "../accordions/Options";
 import CopyToClipboard from '../buttons/CopyToClipboard';
 import ShowHidePassword from "../buttons/ShowHidePassword";
+import OverlayPopover from "../overlays/OverlayPopover";
 
 export default function PasswordForm(props) {
-    const { formData } = props;
-    const { handleChange, handleSubmit, toast } = props.callbacks;
+    const { formData, passwordStrength } = props.state;
+    const { handleChange, handleSubmit } = props.callbacks;
+    const passwordStrengthInfo = (
+        <p>
+            The password strength is calculated using zxcvbn, an open-source solution used by Dropbox, rather than an arbitrary number of digits, symbols or letters. Read more about zxcvbn <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler" target="_blank">here</a>.
+        </p>
+    );
     return (
         <form
             onSubmit={(event) => {
                 handleSubmit(event);
-                toast("Password generated successfully!");
             }}
         >
             <Container>
@@ -46,15 +51,58 @@ export default function PasswordForm(props) {
                     </Col>
                 </Row>
 
-                <Row className="gy-3">
+                <Row>
                     <Col xs="12">
                         <ResultInput formData={formData} />
                     </Col>
-                    <Col className="d-flex justify-content-start align-items-start">
+                    <Col xs="12" className="mb-1">
+                        <div>
+                            <h3 className="fs-6 text-capitalize">
+                                Password Strength
+                                <OverlayPopover
+                                    options={{
+                                        header: "Password Strength",
+                                        body: passwordStrengthInfo,
+                                        trigger: "click"
+                                    }}
+                                >
+                                    <Badge
+                                        pill
+                                        bg="primary"
+                                        className="mx-1"
+                                    >
+                                        ?
+                                    </Badge>
+                                </OverlayPopover>
+                                <Badge
+                                    pill
+                                    bg={passwordStrength.colorVariant}
+                                    className="mx-1"
+                                >
+                                    {passwordStrength.text}
+                                </Badge>
+                            </h3>
+                        </div>
+                        <ProgressBar
+                            now={passwordStrength.value}
+                            variant={passwordStrength.colorVariant}
+                        />
+                        <div className="mt-1 fs-7 text-danger">
+                            <ul>
+                                {
+                                    passwordStrength.feedback.map((element, index) => {
+                                        return <li key={index}>{element}</li>
+                                    })
+                                }
+                            </ul>
+                        </div>
+                    </Col>
+                    <Col className="d-flex justify-content-start align-items-start mb-3">
                         <div className="me-3">
                             <Button
                                 variant="primary"
                                 type="submit"
+                                className="me-2"
                             >
                                 Generate Password
                             </Button>
@@ -62,7 +110,7 @@ export default function PasswordForm(props) {
                         <CopyToClipboard modules={props.modules} copyContent={formData.result} callbacks={props.callbacks} />
                         <ShowHidePassword callbacks={props.callbacks} />
                     </Col>
-                    <Col xs="12" sm="6">
+                    <Col xs="12" sm="6" className="mb-2">
                         <Options
                             formData={formData}
                             callbacks={props.callbacks}
