@@ -2,6 +2,10 @@ body {
     overflow-x: hidden;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 .fs-7 {
     font-size: .8rem;
 }

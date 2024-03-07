@@ -69,7 +69,7 @@ export default function PasswordForm(props) {
                                     <Badge
                                         pill
                                         bg="primary"
-                                        className="mx-1"
+                                        className="mx-1 clickable"
                                     >
                                         ?
                                     </Badge>
