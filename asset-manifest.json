@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/random-password-generator/static/css/main.b57505be.css",
-    "main.js": "/random-password-generator/static/js/main.3b6a8081.js",
+    "main.css": "/random-password-generator/static/css/main.a92e6ad7.css",
+    "main.js": "/random-password-generator/static/js/main.76b145c6.js",
     "static/js/787.a6cc8ef3.chunk.js": "/random-password-generator/static/js/787.a6cc8ef3.chunk.js",
     "static/media/bootstrap-icons.woff?": "/random-password-generator/static/media/bootstrap-icons.66b7720f4a230f1b0341.woff",
     "static/media/bootstrap-icons.woff2?": "/random-password-generator/static/media/bootstrap-icons.64ed46b247405068ca60.woff2",
     "index.html": "/random-password-generator/index.html",
-    "main.b57505be.css.map": "/random-password-generator/static/css/main.b57505be.css.map",
-    "main.3b6a8081.js.map": "/random-password-generator/static/js/main.3b6a8081.js.map",
+    "main.a92e6ad7.css.map": "/random-password-generator/static/css/main.a92e6ad7.css.map",
+    "main.76b145c6.js.map": "/random-password-generator/static/js/main.76b145c6.js.map",
     "787.a6cc8ef3.chunk.js.map": "/random-password-generator/static/js/787.a6cc8ef3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b57505be.css",
-    "static/js/main.3b6a8081.js"
+    "static/css/main.a92e6ad7.css",
+    "static/js/main.76b145c6.js"
   ]
 }
