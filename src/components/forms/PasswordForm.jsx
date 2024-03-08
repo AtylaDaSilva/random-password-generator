@@ -108,6 +108,9 @@ export default function PasswordForm({ state, callbacks }) {
                             </Button>
                         </div>
                         <CopyToClipboard
+                            className="fs-6 mx-1"
+                            btnVariant="outline-primary"
+                            tooltip={{ title: "Copy", placement: "bottom" }}
                             copyContent={formData.result}
                             callbacks={callbacks}
                         />

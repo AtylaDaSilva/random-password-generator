@@ -7,7 +7,7 @@ export default function StartsWithInput(props) {
     const { handleChange } = props.callbacks;
 
     return (
-        <FloatingLabel controlId="starts-with-input" label="Starts with">
+        <FloatingLabel label="Starts with">
             <Form.Control
                 type="text"
                 name="startsWith"

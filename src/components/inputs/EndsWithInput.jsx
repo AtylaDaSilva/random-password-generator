@@ -7,7 +7,7 @@ export default function EndsWithInput(props) {
     const { handleChange } = props.callbacks;
 
     return (
-        <FloatingLabel controlId="ends-with-input" label="Ends with">
+        <FloatingLabel label="Ends with">
             <Form.Control
                 type="text"
                 name="endsWith"

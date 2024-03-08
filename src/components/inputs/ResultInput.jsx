@@ -5,7 +5,7 @@ import { Form, FloatingLabel } from "react-bootstrap";
 export default function ResultInput(props) {
     const { formData } = props;
     return (
-        <FloatingLabel controlId="result-input" label="Result">
+        <FloatingLabel label="Result">
             <Form.Control
                 type="password"
                 name="result"

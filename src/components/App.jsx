@@ -278,7 +278,7 @@ export default function App() {
 
       <MainContent state={state} callbacks={callbacks} />
 
-      <SubFooter state={state} />
+      <SubFooter state={state} callbacks={callbacks} />
 
       <Footer />
     </div>
