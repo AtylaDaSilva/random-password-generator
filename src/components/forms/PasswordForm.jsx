@@ -1,5 +1,6 @@
 //React
 import { React } from "react";
+import { Form, Button, Container, Row, Col, Badge, ProgressBar } from "react-bootstrap";
 
 //Components
 import PasswordLengthRange from "../inputs/PasswordLengthRange";
@@ -9,78 +10,120 @@ import ResultInput from "../inputs/ResultInput";
 import Options from "../accordions/Options";
 import CopyToClipboard from '../buttons/CopyToClipboard';
 import ShowHidePassword from "../buttons/ShowHidePassword";
+import OverlayPopover from "../overlays/OverlayPopover";
 
-export default function PasswordForm(props) {
-    const { formData } = props;
-    const { handleChange, handleSubmit, toast } = props.callbacks;
+export default function PasswordForm({ state, callbacks }) {
+    const { formData, passwordStrength } = state;
+    const { handleChange, handleSubmit } = callbacks;
+    const passwordStrengthInfo = (
+        <p>
+            The password strength is calculated using zxcvbn, an open-source solution used by Dropbox, rather than an arbitrary number of digits, symbols or letters. Read more about zxcvbn <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler" target="_blank">here</a>.
+        </p>
+    );
     return (
-        <form
+        <Form
             onSubmit={(event) => {
                 handleSubmit(event);
-                toast("Password generated successfully!");
             }}
-            className='container h-100 w-100'
         >
-            { /*Row 01 */}
-            <div className="row mb-3">
-                <div className="col">
-                    <div id="password-length-container">
+            <Container>
+                <Row>
+                    <Col className="mb-3">
                         <PasswordLengthRange
                             formData={formData}
                             callbacks={{ handleChange }}
                         />
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
 
-            { /*Row 02 */}
-            <div className="row mb-3">
-                <div className="col">
-                    <div className='d-flex flex-column'>
+                <Row className="gy-3 mb-3">
+                    <Col xs="12">
                         <StartsWithInput
                             formData={formData}
-                            callbacks={props.callbacks}
+                            callbacks={callbacks}
                         />
+                    </Col>
+                    <Col xs="12">
                         <EndsWithInput
                             formData={formData}
-                            callbacks={props.callbacks}
+                            callbacks={callbacks}
                         />
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
 
-            { /*Row 03 */}
-            <div className="row">
-                <div className="col-8">
-                    <div
-                        id="result-container"
-                        className='d-flex flex-column justify-content-center align-self-start'
-                    >
+                <Row>
+                    <Col xs="12" className="mb-2">
                         <ResultInput formData={formData} />
-
-                        <div id="submit-container" className='d-flex flex-row align-items-center'>
-                            <button
-                                className='btn btn-primary me-1'
+                    </Col>
+                    <Col xs="12" className="mb-1">
+                        <div>
+                            <h3 className="fs-6 text-capitalize">
+                                Password Strength
+                                <OverlayPopover
+                                    options={{
+                                        header: "Password Strength",
+                                        body: passwordStrengthInfo,
+                                        trigger: "click"
+                                    }}
+                                >
+                                    <Badge
+                                        pill
+                                        bg="primary"
+                                        className="mx-1 clickable"
+                                    >
+                                        ?
+                                    </Badge>
+                                </OverlayPopover>
+                                <Badge
+                                    pill
+                                    bg={passwordStrength.colorVariant}
+                                    className="mx-1"
+                                >
+                                    {passwordStrength.text}
+                                </Badge>
+                            </h3>
+                        </div>
+                        <ProgressBar
+                            now={passwordStrength.value}
+                            variant={passwordStrength.colorVariant}
+                        />
+                        <div className="mt-1 fs-7 text-danger">
+                            <ul>
+                                {
+                                    passwordStrength.feedback.map((element, index) => {
+                                        return <li key={index}>{element}</li>
+                                    })
+                                }
+                            </ul>
+                        </div>
+                    </Col>
+                    <Col className="d-flex justify-content-start align-items-start mb-3">
+                        <div className="me-3">
+                            <Button
+                                variant="primary"
                                 type="submit"
+                                className="me-2"
                             >
                                 Generate Password
-                            </button>
-
-                            <CopyToClipboard modules={props.modules} copyContent={formData.result} callbacks={ props.callbacks } />
-
-                            <ShowHidePassword callbacks={ props.callbacks } />
+                            </Button>
                         </div>
-                    </div>
-                </div>
-                <div className="col-4">
-                    <div id="options-container">
+                        <CopyToClipboard
+                            className="fs-6 mx-1"
+                            btnVariant="outline-primary"
+                            tooltip={{ title: "Copy", placement: "bottom" }}
+                            copyContent={formData.result}
+                            callbacks={callbacks}
+                        />
+                        <ShowHidePassword callbacks={callbacks} />
+                    </Col>
+                    <Col xs="12" sm="6" className="mb-2">
                         <Options
                             formData={formData}
-                            callbacks={props.callbacks}
+                            callbacks={callbacks}
                         />
-                    </div>
-                </div>
-            </div>
-        </form>
+                    </Col>
+                </Row>
+            </Container>
+        </Form>
     );
 }

@@ -1,16 +1,30 @@
 import React from 'react';
+import OverlayTooltip from '../overlays/OverlayTooltip';
 
 export default function Link({ children, href, className, tooltip }) {
     return (
-        <a
-            href={href}
-            target='_blank'
-            className={className}
-            data-bs-toggle="tooltip"
-            data-bs-title={tooltip?.title}
-            data-bs-placement={tooltip?.placement}
-        >
-            {children}
-        </a>
+        (tooltip)
+            ? (
+                <OverlayTooltip
+                    options={{ title: tooltip?.title, placement: tooltip?.placement }}
+                >
+                    <a
+                        href={href}
+                        target='_blank'
+                        className={className}
+                    >
+                        {children}
+                    </a>
+                </OverlayTooltip>
+            )
+            : (
+                <a
+                    href={href}
+                    target='_blank'
+                    className={className}
+                >
+                    {children}
+                </a>
+            )
     );
 }

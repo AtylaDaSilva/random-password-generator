@@ -14,13 +14,10 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 //WebVitals
 import reportWebVitals from './tests/reportWebVitals';
 
-//Bootstrap JS + Popper.js
-const bootstrap = require('bootstrap');
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App modules={{bootstrap}} />
+    <App />
   </React.StrictMode>
 );
 

@@ -1,12 +1,13 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import SubFooterAccordion from '../accordions/SubFooterAccordion/SubFooterAccordion';
 
-export default function SubFooter({state}) {
+export default function SubFooter({ state, callbacks }) {
     return (
-        <section>
-            <section id='accordion-section' className='mt-5 flex-grow-1'>
-                <SubFooterAccordion state={state} />
+        <Container fluid className='p-0 my-3 d-flex justify-content-center'>
+            <section id='subfooter-accordion'>
+                <SubFooterAccordion state={state} callbacks={callbacks} />
             </section>
-        </section>
+        </Container>
     );
 }

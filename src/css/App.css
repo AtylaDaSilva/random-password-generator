@@ -2,22 +2,32 @@ body {
     overflow-x: hidden;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
+.fs-7 {
+    font-size: .8rem;
+}
+
 /*App*/
 .App {
-    min-height: 100vh;
+    height: 100vh;
     width: 100vw;
 }
 
-.App-header {
-    height: 80px;
-    width: 100%;
+/*Main Content*/
+#main-content {
+    width: 650px;
 }
 
-#main-container {
-    width: 800px;
-    height: 500px;
+@media (max-width: 680px) {
+    #main-content {
+        width: 100%;
+    }
 }
 
-#accordion-section {
+/*Sub-Footer*/
+#subfooter-accordion {
     width: 800px;
 }
