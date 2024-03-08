@@ -31,4 +31,6 @@ This app was made possible with:
 - [React-Bootstrap 2.10.1](https://react-bootstrap.github.io/)
 - [Bootstrap 5.3.2](https://github.com/twbs/bootstrap)
 - [Bootstrap Icons 1.11.2](https://github.com/twbs/icons)
+- [Zxcvbn 4.4.2](https://github.com/dropbox/zxcvbn)
+- [Nanoid 5.0.6](https://github.com/ai/nanoid)
 - [FlatIcon](https://www.flaticon.com/). Favicon original art by [pbig](https://www.flaticon.com/authors/pbig)

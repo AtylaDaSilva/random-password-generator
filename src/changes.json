@@ -1,6 +1,15 @@
 {
     "3.2.0": [
-        "Added change log history"
+        "Added a 'Copy to clipboard' button for each password in the History section",
+        "Updated all vanilla Bootstrap systems to use React Bootstrap",
+        "Added a password strength meter",
+        "Increased minimum password length from 6 to 20",
+        "Improved icon consistency between the 'Copy to clipboard' and 'Show/Hide password' buttons",
+        "Fixed a bug where, if only the 'Starts with' and 'Ends with' fields were filled, the password was not generated",
+        "Fixed a bug where an empty history entry was created when a password failed to generate",
+        "Fixed a bug where an exception occured when a password was generated without any options selected",
+        "Improved app support for smaller screens",
+        "Added changelog history"
     ],
     "3.1.0": [
         "Updated README.md",

@@ -40,6 +40,12 @@ export default function AccordionItemAbout() {
                         <Link href="https://github.com/twbs/icons">Bootstrap Icons 1.11.2</Link>
                     </li>
                     <li>
+                        <Link href="https://github.com/dropbox/zxcvbn">Zxcvbn 4.4.2</Link>
+                    </li>
+                    <li>
+                        <Link href="https://github.com/ai/nanoid">Nanoid 5.0.6</Link>
+                    </li>
+                    <li>
                         <Link href="https://www.flaticon.com">FlatIcon</Link> - Favicon original art by <Link href="https://www.flaticon.com/authors/pbig">pbig</Link>
                     </li>
                 </ul>
