@@ -1,6 +1,6 @@
 //React
 import { React } from "react";
-import { Button, Container, Row, Col, Badge, ProgressBar } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Badge, ProgressBar } from "react-bootstrap";
 
 //Components
 import PasswordLengthRange from "../inputs/PasswordLengthRange";
@@ -12,16 +12,16 @@ import CopyToClipboard from '../buttons/CopyToClipboard';
 import ShowHidePassword from "../buttons/ShowHidePassword";
 import OverlayPopover from "../overlays/OverlayPopover";
 
-export default function PasswordForm(props) {
-    const { formData, passwordStrength } = props.state;
-    const { handleChange, handleSubmit } = props.callbacks;
+export default function PasswordForm({ state, callbacks }) {
+    const { formData, passwordStrength } = state;
+    const { handleChange, handleSubmit } = callbacks;
     const passwordStrengthInfo = (
         <p>
             The password strength is calculated using zxcvbn, an open-source solution used by Dropbox, rather than an arbitrary number of digits, symbols or letters. Read more about zxcvbn <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler" target="_blank">here</a>.
         </p>
     );
     return (
-        <form
+        <Form
             onSubmit={(event) => {
                 handleSubmit(event);
             }}
@@ -40,19 +40,19 @@ export default function PasswordForm(props) {
                     <Col xs="12">
                         <StartsWithInput
                             formData={formData}
-                            callbacks={props.callbacks}
+                            callbacks={callbacks}
                         />
                     </Col>
                     <Col xs="12">
                         <EndsWithInput
                             formData={formData}
-                            callbacks={props.callbacks}
+                            callbacks={callbacks}
                         />
                     </Col>
                 </Row>
 
                 <Row>
-                    <Col xs="12">
+                    <Col xs="12" className="mb-2">
                         <ResultInput formData={formData} />
                     </Col>
                     <Col xs="12" className="mb-1">
@@ -107,17 +107,20 @@ export default function PasswordForm(props) {
                                 Generate Password
                             </Button>
                         </div>
-                        <CopyToClipboard modules={props.modules} copyContent={formData.result} callbacks={props.callbacks} />
-                        <ShowHidePassword callbacks={props.callbacks} />
+                        <CopyToClipboard
+                            copyContent={formData.result}
+                            callbacks={callbacks}
+                        />
+                        <ShowHidePassword callbacks={callbacks} />
                     </Col>
                     <Col xs="12" sm="6" className="mb-2">
                         <Options
                             formData={formData}
-                            callbacks={props.callbacks}
+                            callbacks={callbacks}
                         />
                     </Col>
                 </Row>
             </Container>
-        </form>
+        </Form>
     );
 }

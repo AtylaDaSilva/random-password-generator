@@ -1,17 +1,17 @@
 //React
 import { React } from "react";
+import { Form, Badge } from "react-bootstrap";
 
 export default function PasswordLengthRange(props) {
     const { formData } = props;
     const { handleChange } = props.callbacks;
     return (
         <div className='d-flex flex-column'>
-            <label htmlFor="password-range-input">
+            <Form.Label>
                 Password Length
-                <span className='badge bg-primary ms-1'>{formData.passwordLength}</span>
-            </label>
-            <input
-                type="range"
+                <Badge pill bg="primary" className="ms-1">{formData.passwordLength}</Badge>
+            </Form.Label>
+            <Form.Range
                 name="passwordLength"
                 id="password-range-input"
                 value={formData.passwordLength}

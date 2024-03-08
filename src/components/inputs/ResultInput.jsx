@@ -1,21 +1,19 @@
 //React
 import { React } from "react";
+import { Form, FloatingLabel } from "react-bootstrap";
 
 export default function ResultInput(props) {
     const { formData } = props;
-
     return (
-        <div className="form-floating flex-grow-1 mb-2">
-            <input
+        <FloatingLabel controlId="result-input" label="Result">
+            <Form.Control
                 type="password"
                 name="result"
                 id="result-input"
-                className='form-control'
                 placeholder='Result'
                 value={formData.result}
                 readOnly
             />
-            <label htmlFor="result-input">Result</label>
-        </div>
+        </FloatingLabel>
     );
 }

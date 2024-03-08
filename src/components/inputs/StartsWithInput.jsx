@@ -1,22 +1,21 @@
 //React
 import { React } from "react";
+import { Form, FloatingLabel } from "react-bootstrap";
 
 export default function StartsWithInput(props) {
     const { formData } = props;
     const { handleChange } = props.callbacks;
 
     return (
-        <div className="form-floating">
-            <input
+        <FloatingLabel controlId="starts-with-input" label="Starts with">
+            <Form.Control
                 type="text"
                 name="startsWith"
                 id="starts-with-input"
-                className='form-control'
                 placeholder='Starts with'
                 value={formData.startsWith}
                 onChange={handleChange}
             />
-            <label htmlFor="starts-with-input">Starts with</label>
-        </div>
+        </FloatingLabel>
     );
 }

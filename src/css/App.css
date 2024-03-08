@@ -31,24 +31,3 @@ body {
 #subfooter-accordion {
     width: 800px;
 }
-
-/*Toast*/
-#toast-container {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-}
-
-@media (max-width: 1380px) {
-    #toast-container {
-        top: 0px;
-        right: 0px;
-    }
-}
-
-@media (max-width: 900px) {
-    #toast-container {
-        top: 0%;
-        right: auto;
-    }
-}

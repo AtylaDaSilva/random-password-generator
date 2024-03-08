@@ -1,5 +1,8 @@
 //React
-import { React, useState, useEffect } from 'react';
+import { React, useState } from 'react';
+
+//React Bootstrap
+import { ToastContainer } from 'react-bootstrap';
 
 //CSS
 import '../css/App.css';
@@ -7,7 +10,7 @@ import '../css/App.css';
 //Components
 import MainContent from './containers/MainContent';
 import ThemeSwicther from './buttons/ThemeSwicther';
-import ToastContainer from './toasts/ToastContainer';
+import BasicToast from './toasts/BasicToast';
 import SubFooter from './containers/SubFooter';
 import Footer from './containers/Footer';
 
@@ -18,8 +21,7 @@ try {
   console.error(error);
 }
 
-export default function App(props) {
-  const { bootstrap } = props.modules;
+export default function App() {
 
   /**
    * Generates a pseudo-random password by pulling characters from a character pool
@@ -210,30 +212,18 @@ export default function App(props) {
     return zxcvbn(password);
   }
 
-  //Toast function & state
+  //Toast state and functions
+  const [toastState, setToastState] = useState(() => {
+    return { body: "", show: false }
+  });
+
   /**
-   * Displays a string of text as a toast
-   * @param {*} text The string of text to be displayed
+   * Updates toast state to display a string of text
+   * @param {string} text The string of text to be toasted
    */
   function toast(text) {
-    //Update toast state
-    setToastText(text);
-
-    //Show bootstrap toast
-    const toastElement = document.querySelector("#toast");
-    if (toastElement) {
-      const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
-      toast.show();
-    }
+    setToastState({ body: text, show: true });
   }
-
-  const [toastText, setToastText] = useState(() => "");
-
-  useEffect(() => {
-    //Enable Bootstrap Tooltips
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-  }, []);
 
   //History state and functions
   const [history, setHistory] = useState(() => []);
@@ -261,6 +251,7 @@ export default function App(props) {
   //Object to pass callbacks around between components
   const callbacks = {
     toast,
+    setToastState,
     handleChange,
     handleSubmit,
     setHistory
@@ -270,24 +261,26 @@ export default function App(props) {
     formData,
     history,
     changes,
-    passwordStrength
+    passwordStrength,
+    toastState
   }
 
   return (
     <div className="App d-flex flex-column justify-content-between align-items-center">
 
       <header className="App-header d-flex justify-content-center my-2">
+        <ToastContainer position='top-end' className='p-3'>
+          <BasicToast toast={toastState} setToastState={setToastState} />
+        </ToastContainer>
+
         <ThemeSwicther />
       </header>
 
-      <MainContent modules={{ bootstrap }} state={state} callbacks={callbacks} />
+      <MainContent state={state} callbacks={callbacks} />
 
       <SubFooter state={state} />
 
       <Footer />
-
-      {/* Bootstrap Toast */}
-      <ToastContainer toastText={toastText} />
     </div>
   );
 }
