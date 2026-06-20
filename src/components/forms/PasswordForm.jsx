@@ -1,5 +1,5 @@
 //React
-import { React } from "react";
+import { React, useState } from "react";
 import { Form, Button, Container, Row, Col, Badge, ProgressBar } from "react-bootstrap";
 
 //Components
@@ -9,10 +9,12 @@ import Options from "../accordions/Options";
 import CopyToClipboard from '../buttons/CopyToClipboard';
 import ShowHidePassword from "../buttons/ShowHidePassword";
 import OverlayPopover from "../overlays/OverlayPopover";
+import PasswordHistoryModal from "../overlays/PasswordHistoryModal";
 
 export default function PasswordForm({ state, callbacks }) {
-    const { formData, passwordStrength } = state;
+    const { formData, passwordStrength, history } = state;
     const { handleChange, handleSubmit } = callbacks;
+    const [showHistory, setShowHistory] = useState(false);
 
     const passwordStrengthInfo = (
         <p>
@@ -126,7 +128,7 @@ export default function PasswordForm({ state, callbacks }) {
 
                 {/* 6. Primary Action button at the bottom */}
                 <Row>
-                    <Col xs="12" className="d-grid mt-2">
+                    <Col xs="12" className="d-flex flex-column mt-2 gap-3">
                         <Button
                             variant="primary"
                             type="submit"
@@ -134,9 +136,24 @@ export default function PasswordForm({ state, callbacks }) {
                         >
                             Generate Secure Password
                         </Button>
+                        <Button
+                            variant="secondary"
+                            type="button"
+                            className="history-btn fw-semibold align-self-center"
+                            onClick={() => setShowHistory(true)}
+                        >
+                            <i className="bi bi-clock-history me-2"></i> View Password History
+                        </Button>
                     </Col>
                 </Row>
             </Container>
+
+            <PasswordHistoryModal
+                show={showHistory}
+                onHide={() => setShowHistory(false)}
+                history={history}
+                callbacks={callbacks}
+            />
         </Form>
     );
 }

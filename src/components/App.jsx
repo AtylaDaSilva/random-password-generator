@@ -11,7 +11,6 @@ import '../css/App.css';
 import MainContent from './containers/MainContent';
 import ThemeSwicther from './buttons/ThemeSwicther';
 import BasicToast from './toasts/BasicToast';
-import SubFooter from './containers/SubFooter';
 import SocialMediaContainer from './containers/SocialMediaContainer';
 
 import changesData from '../changes.json';
@@ -271,8 +270,6 @@ export default function App() {
       </header>
 
       <MainContent state={state} callbacks={callbacks} />
-
-      <SubFooter state={state} callbacks={callbacks} />
     </div>
   );
 }

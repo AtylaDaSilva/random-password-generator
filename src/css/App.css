@@ -394,6 +394,11 @@ body {
 }
 
 /* History list design */
+.history-btn {
+  width: 250px;
+}
+
+
 .history-list {
   list-style: none;
   padding: 0;
