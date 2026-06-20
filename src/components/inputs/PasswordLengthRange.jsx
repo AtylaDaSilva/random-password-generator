@@ -16,7 +16,7 @@ export default function PasswordLengthRange(props) {
                 id="password-range-input"
                 value={formData.passwordLength}
                 onChange={handleChange}
-                min={20}
+                min={10}
                 max={100}
             />
         </div>
