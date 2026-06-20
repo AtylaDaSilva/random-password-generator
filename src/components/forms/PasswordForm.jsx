@@ -79,7 +79,7 @@ export default function PasswordForm({ state, callbacks }) {
                                     bg={passwordStrength.colorVariant}
                                     className="strength-badge"
                                 >
-                                    {passwordStrength.text || "None"}
+                                    {passwordStrength.text || ""}
                                 </Badge>
                             </div>
                             <ProgressBar
