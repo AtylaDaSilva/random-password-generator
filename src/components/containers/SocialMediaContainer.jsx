@@ -3,21 +3,21 @@ import Link from '../buttons/Link';
 
 export default function SocialMediaContainer() {
     return (
-        <div>
+        <div className="social-media-links">
             <Link
                 href="https://github.com/AtylaDaSilva"
-                tooltip={{ title: "GitHub", placement: "top" }}
-                className="mx-2"
+                tooltip={{ title: "GitHub", placement: "bottom" }}
+                className="social-media-link"
             >
-                <i className="bi bi-github fs-3"></i>
+                <i className="bi bi-github"></i>
             </Link>
 
             <Link
                 href="https://www.linkedin.com/in/atyla-mendes-da-silva-39a21018b/"
-                tooltip={{ title: "LinkedIn", placement: "top" }}
-                className="mx-2"
+                tooltip={{ title: "LinkedIn", placement: "bottom" }}
+                className="social-media-link"
             >
-                <i className="bi bi-linkedin fs-3"></i>
+                <i className="bi bi-linkedin"></i>
             </Link>
         </div>
     );

@@ -5,7 +5,7 @@ import OverlayTooltip from '../overlays/OverlayTooltip';
 export default function ThemeSwicther(props) {
     const [buttonState, setButtonState] = useState(false);
     return (
-        <div className="theme-switcher-wrapper">
+        <div className="theme-switcher">
             <OverlayTooltip
                 options={{
                     title: `${(buttonState === false) ? "Light" : "Dark"} Theme`

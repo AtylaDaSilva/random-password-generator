@@ -12,7 +12,7 @@ import MainContent from './containers/MainContent';
 import ThemeSwicther from './buttons/ThemeSwicther';
 import BasicToast from './toasts/BasicToast';
 import SubFooter from './containers/SubFooter';
-import Footer from './containers/Footer';
+import SocialMediaContainer from './containers/SocialMediaContainer';
 
 import changesData from '../changes.json';
 
@@ -264,14 +264,15 @@ export default function App() {
           <BasicToast toast={toastState} setToastState={setToastState} />
         </ToastContainer>
 
-        <ThemeSwicther />
+        <div className="app-top-bar">
+          <ThemeSwicther />
+          <SocialMediaContainer />
+        </div>
       </header>
 
       <MainContent state={state} callbacks={callbacks} />
 
       <SubFooter state={state} callbacks={callbacks} />
-
-      <Footer />
     </div>
   );
 }

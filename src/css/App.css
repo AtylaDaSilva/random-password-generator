@@ -449,12 +449,49 @@ body {
   color: var(--accent-hover) !important;
 }
 
-/* Floating Switcher */
-.theme-switcher-wrapper {
+/* Top-right toolbar */
+.app-top-bar {
   position: fixed;
   top: 20px;
   right: 20px;
   z-index: 1000;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-media-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-media-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary) !important;
+  box-shadow: var(--card-shadow);
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-media-link:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: var(--accent-color) !important;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.social-media-link i {
+  font-size: 1.1rem;
 }
 
 .theme-switch-btn {
