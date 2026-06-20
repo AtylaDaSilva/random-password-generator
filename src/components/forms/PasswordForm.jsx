@@ -15,112 +15,147 @@ import OverlayPopover from "../overlays/OverlayPopover";
 export default function PasswordForm({ state, callbacks }) {
     const { formData, passwordStrength } = state;
     const { handleChange, handleSubmit } = callbacks;
+    
     const passwordStrengthInfo = (
         <p>
-            The password strength is calculated using zxcvbn, an open-source solution used by Dropbox, rather than an arbitrary number of digits, symbols or letters. Read more about zxcvbn <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler" target="_blank">here</a>.
+            The password strength is calculated using zxcvbn, an open-source solution used by Dropbox, rather than an arbitrary number of digits, symbols or letters. Read more about zxcvbn <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler" target="_blank" rel="noopener noreferrer">here</a>.
         </p>
     );
+
     return (
         <Form
             onSubmit={(event) => {
                 handleSubmit(event);
             }}
         >
-            <Container>
-                <Row>
-                    <Col className="mb-3">
-                        <PasswordLengthRange
-                            formData={formData}
-                            callbacks={{ handleChange }}
-                        />
+            <Container className="p-0">
+                {/* 1. Result input area at the top */}
+                <Row className="mb-4">
+                    <Col xs="12">
+                        <div className="result-group">
+                            <ResultInput formData={formData} />
+                            <div className="result-actions">
+                                <ShowHidePassword 
+                                    callbacks={callbacks} 
+                                    className="result-btn"
+                                    btnVariant="light"
+                                />
+                                <CopyToClipboard
+                                    className="result-btn"
+                                    btnVariant="light"
+                                    tooltip={{ title: "Copy", placement: "bottom" }}
+                                    copyContent={formData.result}
+                                    callbacks={callbacks}
+                                />
+                            </div>
+                        </div>
                     </Col>
                 </Row>
 
-                <Row className="gy-3 mb-3">
+                {/* 2. Password Strength progress bar and feedback */}
+                <Row className="mb-4">
                     <Col xs="12">
-                        <StartsWithInput
-                            formData={formData}
-                            callbacks={callbacks}
-                        />
-                    </Col>
-                    <Col xs="12">
-                        <EndsWithInput
-                            formData={formData}
-                            callbacks={callbacks}
-                        />
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col xs="12" className="mb-2">
-                        <ResultInput formData={formData} />
-                    </Col>
-                    <Col xs="12" className="mb-1">
-                        <div>
-                            <h3 className="fs-6 text-capitalize">
-                                Password Strength
-                                <OverlayPopover
-                                    options={{
-                                        header: "Password Strength",
-                                        body: passwordStrengthInfo,
-                                        trigger: "click"
-                                    }}
-                                >
-                                    <Badge
-                                        pill
-                                        bg="primary"
-                                        className="mx-1 clickable"
+                        <div className="strength-section">
+                            <div className="strength-header">
+                                <h3 className="strength-title">
+                                    Password Strength
+                                    <OverlayPopover
+                                        options={{
+                                            header: "Password Strength",
+                                            body: passwordStrengthInfo,
+                                            trigger: "click"
+                                        }}
                                     >
-                                        ?
-                                    </Badge>
-                                </OverlayPopover>
+                                        <Badge
+                                            pill
+                                            bg="primary"
+                                            className="mx-2 clickable"
+                                            style={{ fontSize: '0.7rem', padding: '0.3em 0.6em' }}
+                                        >
+                                            ?
+                                        </Badge>
+                                    </OverlayPopover>
+                                </h3>
                                 <Badge
                                     pill
                                     bg={passwordStrength.colorVariant}
-                                    className="mx-1"
+                                    className="strength-badge"
                                 >
-                                    {passwordStrength.text}
+                                    {passwordStrength.text || "None"}
                                 </Badge>
-                            </h3>
-                        </div>
-                        <ProgressBar
-                            now={passwordStrength.value}
-                            variant={passwordStrength.colorVariant}
-                        />
-                        <div className="mt-1 fs-7 text-danger">
-                            <ul>
-                                {
-                                    passwordStrength.feedback.map((element, index) => {
-                                        return <li key={index}>{element}</li>
-                                    })
-                                }
-                            </ul>
+                            </div>
+                            <ProgressBar
+                                now={passwordStrength.value}
+                                variant={passwordStrength.colorVariant}
+                            />
+                            {passwordStrength.feedback.length > 0 && (
+                                <div className="strength-feedback text-danger">
+                                    <ul>
+                                        {passwordStrength.feedback.map((element, index) => (
+                                            <li key={index}>{element}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
                         </div>
                     </Col>
-                    <Col className="d-flex justify-content-start align-items-start mb-3">
-                        <div className="me-3">
-                            <Button
-                                variant="primary"
-                                type="submit"
-                                className="me-2"
-                            >
-                                Generate Password
-                            </Button>
+                </Row>
+
+                {/* 3. Length range slider */}
+                <Row className="mb-4">
+                    <Col xs="12">
+                        <div className="range-container">
+                            <PasswordLengthRange
+                                formData={formData}
+                                callbacks={{ handleChange }}
+                            />
                         </div>
-                        <CopyToClipboard
-                            className="fs-6 mx-1"
-                            btnVariant="outline-primary"
-                            tooltip={{ title: "Copy", placement: "bottom" }}
-                            copyContent={formData.result}
-                            callbacks={callbacks}
-                        />
-                        <ShowHidePassword callbacks={callbacks} />
                     </Col>
-                    <Col xs="12" sm="6" className="mb-2">
+                </Row>
+
+                {/* 4. Starts with & Ends with configuration fields */}
+                <Row className="gy-3 mb-4">
+                    <Col md="6">
+                        <div className="floating-container">
+                            <StartsWithInput
+                                formData={formData}
+                                callbacks={callbacks}
+                            />
+                        </div>
+                    </Col>
+                    <Col md="6">
+                        <div className="floating-container">
+                            <EndsWithInput
+                                formData={formData}
+                                callbacks={callbacks}
+                            />
+                        </div>
+                    </Col>
+                </Row>
+
+                {/* 5. Options toggles directly in view */}
+                <Row className="mb-4">
+                    <Col xs="12">
+                        <h4 className="fs-6 text-uppercase fw-bold text-secondary mb-3" style={{ letterSpacing: '0.75px' }}>
+                            Character Settings
+                        </h4>
                         <Options
                             formData={formData}
                             callbacks={callbacks}
                         />
+                    </Col>
+                </Row>
+
+                {/* 6. Primary Action button at the bottom */}
+                <Row>
+                    <Col xs="12" className="d-grid mt-2">
+                        <Button
+                            variant="primary"
+                            type="submit"
+                            className="generate-btn"
+                        >
+                            Generate Secure Password
+                        </Button>
                     </Col>
                 </Row>
             </Container>

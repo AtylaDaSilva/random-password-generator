@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import OverlayTooltip from '../overlays/OverlayTooltip';
 
-export default function ShowHidePassword({ callbacks }) {
+export default function ShowHidePassword({ callbacks, className, btnVariant }) {
     const [show, setShow] = useState(false);
     const { toast } = callbacks;
     return (
@@ -10,8 +10,8 @@ export default function ShowHidePassword({ callbacks }) {
             options={{ title: (!show ? "Show" : "Hide"), placement: "bottom" }}
         >
             <Button
-                variant='outline-primary'
-                className='mx-1'
+                variant={btnVariant || 'outline-primary'}
+                className={className || 'mx-1'}
                 onClick={() => {
                     //Get result input reference and change type according to state
                     const result_input = document.querySelector("#result-input");

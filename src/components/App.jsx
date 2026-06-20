@@ -266,7 +266,7 @@ export default function App() {
   }
 
   return (
-    <div className="App d-flex flex-column justify-content-between align-items-center">
+    <div className="App d-flex flex-column justify-content-center align-items-center">
 
       <header className="App-header d-flex justify-content-center my-2">
         <ToastContainer position='top-end' className='p-3'>

@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import App from '../components/App';
 
-test('renders learn react link', () => {
+test('renders random password generator heading', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const headingElement = screen.getByRole('heading', { name: /random password generator/i });
+  expect(headingElement).toBeInTheDocument();
 });
