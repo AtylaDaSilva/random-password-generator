@@ -14,12 +14,7 @@ import BasicToast from './toasts/BasicToast';
 import SubFooter from './containers/SubFooter';
 import Footer from './containers/Footer';
 
-//Changelog
-try {
-  var changesData = require("../changes.json");
-} catch (error) {
-  console.error(error);
-}
+import changesData from '../changes.json';
 
 export default function App() {
 

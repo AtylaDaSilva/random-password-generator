@@ -1,13 +1,11 @@
 import React from 'react';
 import { Accordion } from 'react-bootstrap';
 import AccordionItemHistory from './AccordionItemHistory';
-import AccordionItemChangeLog from './AccordionItemChangeLog';
 
 export default function SubFooterAccordion({ state, callbacks }) {
     return (
-        <Accordion >
+        <Accordion>
             <AccordionItemHistory history={state.history} callbacks={callbacks} />
-            <AccordionItemChangeLog changes={state.changes} />
         </Accordion>
     );
 }
