@@ -4,8 +4,6 @@ import { Form, Button, Container, Row, Col, Badge, ProgressBar } from "react-boo
 
 //Components
 import PasswordLengthRange from "../inputs/PasswordLengthRange";
-import StartsWithInput from "../inputs/StartsWithInput";
-import EndsWithInput from "../inputs/EndsWithInput";
 import ResultInput from "../inputs/ResultInput";
 import Options from "../accordions/Options";
 import CopyToClipboard from '../buttons/CopyToClipboard';
@@ -15,7 +13,7 @@ import OverlayPopover from "../overlays/OverlayPopover";
 export default function PasswordForm({ state, callbacks }) {
     const { formData, passwordStrength } = state;
     const { handleChange, handleSubmit } = callbacks;
-    
+
     const passwordStrengthInfo = (
         <p>
             The password strength is calculated using zxcvbn, an open-source solution used by Dropbox, rather than an arbitrary number of digits, symbols or letters. Read more about zxcvbn <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler" target="_blank" rel="noopener noreferrer">here</a>.
@@ -35,8 +33,8 @@ export default function PasswordForm({ state, callbacks }) {
                         <div className="result-group">
                             <ResultInput formData={formData} />
                             <div className="result-actions">
-                                <ShowHidePassword 
-                                    callbacks={callbacks} 
+                                <ShowHidePassword
+                                    callbacks={callbacks}
                                     className="result-btn"
                                     btnVariant="light"
                                 />
@@ -108,26 +106,6 @@ export default function PasswordForm({ state, callbacks }) {
                             <PasswordLengthRange
                                 formData={formData}
                                 callbacks={{ handleChange }}
-                            />
-                        </div>
-                    </Col>
-                </Row>
-
-                {/* 4. Starts with & Ends with configuration fields */}
-                <Row className="gy-3 mb-4">
-                    <Col md="6">
-                        <div className="floating-container">
-                            <StartsWithInput
-                                formData={formData}
-                                callbacks={callbacks}
-                            />
-                        </div>
-                    </Col>
-                    <Col md="6">
-                        <div className="floating-container">
-                            <EndsWithInput
-                                formData={formData}
-                                callbacks={callbacks}
                             />
                         </div>
                     </Col>

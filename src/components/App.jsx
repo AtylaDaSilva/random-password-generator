@@ -40,8 +40,6 @@ export default function App() {
     ];
 
     //Password Form Data
-    const startsWith = formData.startsWith;
-    const endsWith = formData.endsWith;
     const passwordLength = formData.passwordLength;
     const options = Object.values(formData.options);
     let password = "";
@@ -49,7 +47,7 @@ export default function App() {
     //Check if at least 1 option was selected
     const noOptionsSelected = options.every(opt => opt === false);
 
-    if (noOptionsSelected) return startsWith + endsWith;
+    if (noOptionsSelected) return "";
 
     //Generate password
     for (let i = 0; i < passwordLength; i++) {
@@ -57,7 +55,7 @@ export default function App() {
     }
 
     //Return concatenated password
-    return `${startsWith}${password}${endsWith}`;
+    return password;
   }
 
   /**
@@ -123,8 +121,6 @@ export default function App() {
   /*Form Data State */
   const [formData, setFormData] = useState({
     passwordLength: 42,
-    startsWith: "",
-    endsWith: "",
     options: {
       hasNumbers: true,
       hasSymbols: true,
