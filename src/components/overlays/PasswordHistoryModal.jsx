@@ -11,8 +11,8 @@ export default function PasswordHistoryModal({ show, onHide, history, callbacks 
             return (
                 <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center bg-transparent border-secondary-subtle">
                     <div className="text-break me-3">
+                        <small className="text-muted d-block">{time}</small>
                         <span className="fw-bold me-2 text-light">{password}</span>
-                        <small className="text-muted">{time}</small>
                     </div>
                     <CopyToClipboard
                         btnVariant="outline-secondary"
