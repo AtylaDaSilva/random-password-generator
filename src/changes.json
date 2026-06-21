@@ -1,4 +1,12 @@
 {
+    "4.0.0": [
+        "Completely reworked the User Interaface",
+        "Removed 'Starts With' and 'Ends With' fields",
+        "Decreased the minimum password length to 10 characters",
+        "Moved social media icons to top right of page",
+        "Reworked password history",
+        "Rebranded application from Password Generator to ENTROPY"
+    ],
     "3.2.0": [
         "Added a 'Copy to clipboard' button for each password in the History section",
         "Updated all vanilla Bootstrap systems to use React Bootstrap",
