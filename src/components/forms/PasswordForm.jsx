@@ -41,7 +41,7 @@ export default function PasswordForm({ state, callbacks }) {
                                     btnVariant="light"
                                 />
                                 <CopyToClipboard
-                                    className="result-btn"
+                                    className="result-btn ms-1 me-2"
                                     btnVariant="light"
                                     tooltip={{ title: "Copy", placement: "bottom" }}
                                     copyContent={formData.result}
