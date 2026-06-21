@@ -16,17 +16,20 @@ export default function MainContent({ state, callbacks }) {
             id='main-content'
             className="d-flex flex-column justify-content-start"
         >
-            <h1 className='mb-4 text-center fs-2 d-flex align-items-center justify-content-center flex-wrap gap-2'>
-                <span>Random Password Generator</span>
-                <Badge
-                    pill
-                    bg=""
-                    className="version-badge clickable fs-6 px-3 py-1 fw-semibold"
-                    onClick={() => setShowChangelog(true)}
-                >
-                    v{currentVersion}
-                </Badge>
-            </h1>
+            <div className='text-center mb-4'>
+                <h1 className='text-center fs-2 d-flex align-items-center justify-content-center flex-wrap gap-2'>
+                    <span>ENTROPY</span>
+                    <Badge
+                        pill
+                        bg=""
+                        className="version-badge clickable fs-6 px-3 py-1 fw-semibold"
+                        onClick={() => setShowChangelog(true)}
+                    >
+                        v{currentVersion}
+                    </Badge>
+                </h1>
+                <span className='text-muted'>RANDOM PASSWORD GENERATOR</span>
+            </div>
 
             <PasswordForm state={state} callbacks={callbacks} />
 

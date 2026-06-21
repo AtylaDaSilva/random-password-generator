@@ -68,7 +68,6 @@ body {
   background: linear-gradient(135deg, var(--text-primary), var(--accent-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 2rem !important;
 }
 
 /* Result Area Group */
